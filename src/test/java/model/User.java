@@ -62,4 +62,16 @@ public class User {
    public void setSessionToken(String sessionToken) {
       this.sessionToken = sessionToken;
    }
+
+   @Override
+   public String toString() {
+      return "User{" +
+              "email='" + email + '\'' +
+              ", latitude=" + latitude +
+              ", longitude=" + longitude +
+              ", loginMode='" + loginMode + '\'' +
+              ", password='" + password + '\'' +
+              ", sessionToken='" + sessionToken + '\'' +
+              '}';
+   }
 }

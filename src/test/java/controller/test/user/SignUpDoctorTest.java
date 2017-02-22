@@ -26,8 +26,8 @@ public class SignUpDoctorTest {
 
       // create EMAIL
       String email = "doctor_" + new Random().nextInt(243656300) + "@gmail.com";
-      Double latitude = LATITUDE + new Random().nextInt(10);
-      Double longitude = LONGITUDE + new Random().nextInt(20);
+      Double latitude = LATITUDE + new Random().nextInt(10)/100;
+      Double longitude = LONGITUDE + new Random().nextInt(20)/100;
 
       // #1 create response
       String response = sing_up_FACEBOOK(email, latitude.toString(), longitude.toString());
@@ -48,7 +48,7 @@ public class SignUpDoctorTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"longitude\":\"" + longitude.toString() + "\",\"consultationFee\":0,\"latitude\":\"" + latitude.toString() + "\",\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"FACEBOOK\"}],\"title\":\"Dr\"},\"status\":true,\"sessionToken\":\"" + sessionToken + "\",\"statusCode\":200,\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"consultationFee\":0,\"latitude\":\"" + latitude.toString() + "\",\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"FACEBOOK\"}],\"title\":\"Dr\"},\"status\":true,\"sessionToken\":\"" + sessionToken + "\",\"statusCode\":200,\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -81,7 +81,7 @@ public class SignUpDoctorTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"GPLUS\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"GPLUS\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -116,7 +116,7 @@ public class SignUpDoctorTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"EMAIL\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"EMAIL\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -165,7 +165,7 @@ public class SignUpDoctorTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"EMAIL\"},{\"loginMode\":\"FACEBOOK\"},{\"loginMode\":\"GPLUS\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"EMAIL\"},{\"loginMode\":\"FACEBOOK\"},{\"loginMode\":\"GPLUS\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -178,6 +178,7 @@ public class SignUpDoctorTest {
    private String sing_up_FACEBOOK(String email, String latitude, String longitude) {
       return "{\n" +
               "\"fullName\":\"Alex Maximov\",\n" +
+              "\"religion\":\"Religion\",\n" +
               "\"loginMode\":\"FACEBOOK\",\n" +
               "\"email\":\" " + email + "\",\n" +
               "\"mobile\":\"77777777777\",\n" +
@@ -240,6 +241,7 @@ public class SignUpDoctorTest {
       return "{\n" +
               "\"fullName\":\"Alex Maximov\",\n" +
               "\"loginMode\":\"GPLUS\",\n" +
+              "\"religion\":\"Religion\",\n" +
               "\"email\":\" " + email + "\",\n" +
               "\"latitude\": \"" + latitude + "\",\n" +
               "\"longitude\": \"" + longitude + "\",\n" +
@@ -301,6 +303,7 @@ public class SignUpDoctorTest {
       return "{\n" +
               "\"fullName\":\"Alex Maximov\",\n" +
               "\"loginMode\":\"Email\",\n" +
+              "\"religion\":\"Religion\",\n" +
               "\"email\":\"" + email + "\",\n" +
               "\"latitude\": \"" + latitude + "\",\n" +
               "\"longitude\": \"" + longitude + "\",\n" +
@@ -365,6 +368,7 @@ public class SignUpDoctorTest {
 
       String request = "{\n" +
               "\"fullName\":\"Alex Maximov\",\n" +
+              "\"religion\":\"Religion\",\n" +
               "\"loginMode\":\"" + loginMode + "\",\n" +
               "\"email\":\"" + email + "\",\n" +
               "\"latitude\": \"" + latitude + "\",\n" +

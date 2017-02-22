@@ -10,17 +10,13 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static constants.Constant.URL_SIGN_UP;
+import static constants.Constant.*;
 import static junit.framework.TestCase.assertEquals;
 
 /**
  * @author malex
  */
 public class SignUpPatientTest {
-
-   private final static Double LATITUDE = 31.5550281;
-   private final static Double LONGITUDE = 74.3112118;
-
 
    @Test
    public void SignUpPatient_FACEBOOK() throws UnirestException {
@@ -99,8 +95,8 @@ public class SignUpPatientTest {
 
       // create EMAIL
       String email = "patient_" + new Random().nextInt(20000123) + "@gmail.com";
-      Double latitude = LATITUDE + new Random().nextInt(10);
-      Double longitude = LONGITUDE + new Random().nextInt(20);
+      Double latitude = LATITUDE + new Random().nextInt(10)/100;
+      Double longitude = LONGITUDE + new Random().nextInt(20)/100;
       String response = sing_up_EMAIL(email, latitude.toString(), longitude.toString(), "123456789");
 
 
@@ -141,8 +137,6 @@ public class SignUpPatientTest {
               .header("content-type", "application/json")
               .header("cache-control", "no-cache")
               .body(response).asJson();
-
-      // #2
 
       response = sing_up_FACEBOOK(email, latitude.toString(), longitude.toString());
 
@@ -396,7 +390,6 @@ public class SignUpPatientTest {
               "],\n" +
               "\"religion\":\"Religion\"\n" +
               "}";
-      ;
 
 
       // #2 POST RESPONSE
