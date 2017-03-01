@@ -2,6 +2,7 @@ package media;
 
 import controller.test.user.SignUpPatientTest;
 import model.User;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
 
@@ -59,7 +60,7 @@ public class UpdateUserProfileTest {
    @Test
    public void testFullProfileWithoutRole() throws IOException {
       // #1 Create PATIENT
-      String emailPATIENT = "patient_p" + new Random().nextInt(243656300) + "@gmail.com";
+      String emailPATIENT = "patient_p" + new Date().getTime() + "@gmail.com";
       Double latitudePATIENT = LATITUDE + new Random().nextInt(10);
       Double longitudePATIENT = LONGITUDE + new Random().nextInt(20);
       String passwordPATIENT = "12345678";
@@ -69,7 +70,6 @@ public class UpdateUserProfileTest {
       String sessionToken = patient.getSessionToken();
       int id = patient.getId();
 
-//      String sessionToken = "E5B505B6A2FFB2709AD8E4D8A91BE3F5187";
       String email = "new_email" + new Date().getTime() + "@gmail.com";
       String phone = "0987654321";
       String gender = "Male";
@@ -107,11 +107,10 @@ public class UpdateUserProfileTest {
       String response = multipart.finish(); // response from server.
 
       JSONObject jsonObject = new JSONObject(response);
-//      String path = (String) jsonObject.get("path");
+      String path = (String) jsonObject.get("path");
       Boolean status = (Boolean) jsonObject.get("status");
       String message = (String) jsonObject.get("message");
       Integer statusCode = (Integer) jsonObject.get("statusCode");
-
 
       assertEquals("The profile of User successfully updated", message);
       assertEquals(Boolean.TRUE, status);
@@ -131,17 +130,18 @@ public class UpdateUserProfileTest {
       assertEquals(streetAddress, (String) userById.getJSONObject("user").get("streetAddress"));
       assertEquals(occupation, (String) userById.getJSONObject("user").get("occupation"));
       assertEquals(insuranceCompany, (String) userById.getJSONObject("user").get("insuranceCompany"));
-      assertEquals(title, (String) userById.getJSONObject("user").get("title"));
+      assertEquals(title, ((String) userById.getJSONObject("user").get("title")).trim());
       assertEquals(latitude, (String) userById.getJSONObject("user").get("latitude"));
       assertEquals(longitude, (String) userById.getJSONObject("user").get("longitude"));
 
+      assertTrue(!path.isEmpty());
    }
 
    @Test
    public void testFullProfileWithoutRoleEmptyValue() throws IOException {
 
       // #1 Create PATIENT
-      String emailPATIENT = "patient_p" + new Random().nextInt(243656300) + "@gmail.com";
+      String emailPATIENT = "patient_p" + new Date().getTime() + "@gmail.com";
       Double latitudePATIENT = LATITUDE + new Random().nextInt(10);
       Double longitudePATIENT = LONGITUDE + new Random().nextInt(20);
       String passwordPATIENT = "12345678";
@@ -205,6 +205,110 @@ public class UpdateUserProfileTest {
 
       assertTrue(!emailActual.isEmpty());
       assertEquals(sessionToken, sessionTokenActual);
+
+   }
+
+   @Test
+   public void testFullProfileWithLanguage() throws IOException {
+      // #1 Create PATIENT
+      String emailPATIENT = "patient_p_" + new Date().getTime() + "@gmail.com";
+      Double latitudePATIENT = LATITUDE + new Random().nextInt(10);
+      Double longitudePATIENT = LONGITUDE + new Random().nextInt(20);
+      String passwordPATIENT = "12345678";
+      String loginModePATIENT = "EMAIL";
+
+      User patient = SignUpPatientTest.singUn_To_App_Patient(emailPATIENT, passwordPATIENT, loginModePATIENT, latitudePATIENT.toString(), longitudePATIENT.toString());
+      String sessionToken = patient.getSessionToken();
+      int id = patient.getId();
+
+      String email = "new_email" + new Date().getTime() + "@gmail.com";
+
+      // #2 send request
+      MultipartUtility multipart = new MultipartUtility(URL_UPDATE_USER_PROFILE, "UTF-8");
+      multipart.addFormField("email", email);
+      multipart.addFormField("sessionToken", sessionToken);
+
+      // languages
+      String[] languages = {"English", "French", "German"};
+      JSONArray jsonArray = new JSONArray(languages);
+      multipart.addFormField("languages", jsonArray.toString());
+
+
+      multipart.addFilePart("file", new File("image.jpg"));
+      String response = multipart.finish(); // response from server.
+
+      JSONObject jsonObject = new JSONObject(response);
+      Boolean status = (Boolean) jsonObject.get("status");
+      String message = (String) jsonObject.get("message");
+      Integer statusCode = (Integer) jsonObject.get("statusCode");
+
+      assertEquals("The profile of User successfully updated", message);
+      assertEquals(Boolean.TRUE, status);
+      assertEquals(new Integer(200), statusCode);
+      System.out.println(response);
+
+      // #4 validate user from DB
+      JSONObject userById = getUserById(id);
+      assertEquals(email, (String) userById.getJSONObject("user").get("email"));
+      assertEquals(sessionToken, (String) userById.getJSONObject("user").get("sessionToken"));
+
+      // languages
+      String languagesResponse = userById.getJSONObject("user").get("languages").toString();
+      for(String iter: languages){
+         assertTrue(languagesResponse.contains(iter));
+      }
+
+   }
+
+   @Test
+   public void testFullProfileWithSpecialties() throws IOException {
+      // #1 Create PATIENT
+      String emailPATIENT = "patient_p_" + new Date().getTime() + "@gmail.com";
+      Double latitudePATIENT = LATITUDE + new Random().nextInt(10);
+      Double longitudePATIENT = LONGITUDE + new Random().nextInt(20);
+      String passwordPATIENT = "12345678";
+      String loginModePATIENT = "EMAIL";
+
+      User patient = SignUpPatientTest.singUn_To_App_Patient(emailPATIENT, passwordPATIENT, loginModePATIENT, latitudePATIENT.toString(), longitudePATIENT.toString());
+      String sessionToken = patient.getSessionToken();
+      int id = patient.getId();
+
+      String email = "new_email" + new Date().getTime() + "@gmail.com";
+
+      // #2 send request
+      MultipartUtility multipart = new MultipartUtility(URL_UPDATE_USER_PROFILE, "UTF-8");
+      multipart.addFormField("email", email);
+      multipart.addFormField("sessionToken", sessionToken);
+
+      // specialties
+      String[] specialties = {"Allergist", "Anaesthesiologist", "Biomedical scientist"};
+      JSONArray jsonArray = new JSONArray(specialties);
+      multipart.addFormField("specialties", jsonArray.toString());
+
+      multipart.addFilePart("file", new File("image.jpg"));
+      String response = multipart.finish(); // response from server.
+
+      JSONObject jsonObject = new JSONObject(response);
+      Boolean status = (Boolean) jsonObject.get("status");
+      String message = (String) jsonObject.get("message");
+      Integer statusCode = (Integer) jsonObject.get("statusCode");
+
+      assertEquals("The profile of User successfully updated", message);
+      assertEquals(Boolean.TRUE, status);
+      assertEquals(new Integer(200), statusCode);
+      System.out.println(response);
+
+      // #4 validate user from DB
+      JSONObject userById = getUserById(id);
+      assertEquals(email, (String) userById.getJSONObject("user").get("email"));
+      assertEquals(sessionToken, (String) userById.getJSONObject("user").get("sessionToken"));
+
+      // check specialties
+      String specialtiesResponse = userById.getJSONObject("user").get("specialties").toString();
+      for (String iter : specialties) {
+         assertTrue(specialtiesResponse.contains(iter));
+      }
+
 
    }
 
