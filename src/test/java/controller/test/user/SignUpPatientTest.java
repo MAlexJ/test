@@ -95,8 +95,8 @@ public class SignUpPatientTest {
 
       // create EMAIL
       String email = "patient_" + new Random().nextInt(20000123) + "@gmail.com";
-      Double latitude = LATITUDE + new Random().nextInt(10)/100;
-      Double longitude = LONGITUDE + new Random().nextInt(20)/100;
+      Double latitude = LATITUDE + new Random().nextInt(10) / 100;
+      Double longitude = LONGITUDE + new Random().nextInt(20) / 100;
       String response = sing_up_EMAIL(email, latitude.toString(), longitude.toString(), "123456789");
 
 
@@ -406,6 +406,7 @@ public class SignUpPatientTest {
       // get values
       JSONObject jsonObject = actualResponse.getBody().getObject();
 
+      user.setId((Integer) jsonObject.getJSONObject("user").get("userId"));
       user.setEmail((String) jsonObject.getJSONObject("user").get("email"));
       user.setSessionToken((String) jsonObject.get("sessionToken"));
 

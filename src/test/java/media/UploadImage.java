@@ -19,7 +19,7 @@ import static junit.framework.TestCase.assertTrue;
  */
 public class UploadImage {
 
-   @Test
+//   @Test
    public void testUploadImage() throws IOException {
 
       // #1 Create PATIENT
