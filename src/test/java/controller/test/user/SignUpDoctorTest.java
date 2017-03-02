@@ -199,41 +199,15 @@ public class SignUpDoctorTest {
               "\"title\":\"Dr\",\n" +
               "\n" +
               "\"specialties\":[\n" +
-              "\t{\"name\": \"Nephrology\"},\n" +
-              "\t{\"name\": \"Cardiology\"}\n" +
+              "\t{\"name\": \"Allergist\"},\n" +
+              "\t{\"name\": \"Dentist\"}\n" +
               "\t],\n" +
               "\n" +
               "\"languages\": [\n" +
               "\t{\"language\": \"Arabic\"},\n" +
               "\t{\"language\": \"English\"}\n" +
-              "\t],\n" +
-              "\t\n" +
-              "\t\"employmentHistories\":\n" +
-              "\t[\n" +
-              "\t{\n" +
-              "\t\t\"paymentCredentials\":\"Payment credentials\",\n" +
-              "\t\t\"registrationNumber\":\"N98765789\",\n" +
-              "\t\t\"timeConsultation\":\"30\",\n" +
-              "\t\t\"dayStart\":\"28800000000000\",\n" +
-              "\t\t\"dayEnd\":\"61200000000000\",\n" +
-              "\t\t\"hospitalAffiliation\":\"Hospital Affiliation\",\n" +
-              "\t\t\"practice\":\"2\",\n" +
-              "\t\t\n" +
-              "\t\t\"universities\":[\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Name university 1\",\n" +
-              "\t\t\t\t\"degree\":\"Bachelor\",\n" +
-              "\t\t\t\t\"year\":\"2015\"\n" +
-              "\t\t\t},\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Name university 2\",\n" +
-              "\t\t\t\t\"degree\":\"Bachelor of Medicine\",\n" +
-              "\t\t\t\t\"year\":\"2017\"\n" +
-              "\t\t\t}\n" +
-              "\t\t\t\n" +
-              "\t\t\t]\n" +
-              "\t}\n" +
               "\t]\n" +
+              "\t\n" +
               "}\n";
    }
 
@@ -261,40 +235,13 @@ public class SignUpDoctorTest {
               "\"title\":\"Dr\",\n" +
               "\n" +
               "\"specialties\":[\n" +
-              "\t{\"name\": \"Nephrology\"},\n" +
-              "\t{\"name\": \"Cardiology\"}\n" +
+              "\t{\"name\": \"Allergist\"},\n" +
+              "\t{\"name\": \"Dentist\"}\n" +
               "\t],\n" +
               "\n" +
               "\"languages\": [\n" +
               "\t{\"language\": \"Arabic\"},\n" +
               "\t{\"language\": \"English\"}\n" +
-              "\t],\n" +
-              "\t\n" +
-              "\t\"employmentHistories\":\n" +
-              "\t[\n" +
-              "\t{\n" +
-              "\t\t\"paymentCredentials\":\"Payment credentials\",\n" +
-              "\t\t\"registrationNumber\":\"N98765789\",\n" +
-              "\t\t\"timeConsultation\":\"30\",\n" +
-              "\t\t\"dayStart\":\"28800000000000\",\n" +
-              "\t\t\"dayEnd\":\"61200000000000\",\n" +
-              "\t\t\"hospitalAffiliation\":\"Hospital Affiliation\",\n" +
-              "\t\t\"practice\":\"2\",\n" +
-              "\t\t\n" +
-              "\t\t\"universities\":[\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Name university 1\",\n" +
-              "\t\t\t\t\"degree\":\"Bachelor\",\n" +
-              "\t\t\t\t\"year\":\"2015\"\n" +
-              "\t\t\t},\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Name university 2\",\n" +
-              "\t\t\t\t\"degree\":\"Bachelor of Medicine\",\n" +
-              "\t\t\t\t\"year\":\"2017\"\n" +
-              "\t\t\t}\n" +
-              "\t\t\t\n" +
-              "\t\t\t]\n" +
-              "\t}\n" +
               "\t]\n" +
               "}\n";
    }
@@ -324,40 +271,13 @@ public class SignUpDoctorTest {
               "\"title\":\"Dr\",\n" +
               "\n" +
               "\"specialties\":[\n" +
-              "\t{\"name\": \"Nephrology\"},\n" +
-              "\t{\"name\": \"Cardiology\"}\n" +
+              "\t{\"name\": \"Allergist\"},\n" +
+              "\t{\"name\": \"Dentist\"}\n" +
               "\t],\n" +
               "\n" +
               "\"languages\": [\n" +
               "\t{\"language\": \"Arabic\"},\n" +
               "\t{\"language\": \"English\"}\n" +
-              "\t],\n" +
-              "\t\n" +
-              "\t\"employmentHistories\":\n" +
-              "\t[\n" +
-              "\t{\n" +
-              "\t\t\"paymentCredentials\":\"Payment credentials\",\n" +
-              "\t\t\"registrationNumber\":\"N98765789\",\n" +
-              "\t\t\"timeConsultation\":\"30\",\n" +
-              "\t\t\"dayStart\":\"28800000000000\",\n" +
-              "\t\t\"dayEnd\":\"61200000000000\",\n" +
-              "\t\t\"hospitalAffiliation\":\"Hospital Affiliation\",\n" +
-              "\t\t\"practice\":\"2\",\n" +
-              "\t\t\n" +
-              "\t\t\"universities\":[\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Name university 1\",\n" +
-              "\t\t\t\t\"degree\":\"Bachelor\",\n" +
-              "\t\t\t\t\"year\":\"2015\"\n" +
-              "\t\t\t},\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Name university 2\",\n" +
-              "\t\t\t\t\"degree\":\"Bachelor of Medicine\",\n" +
-              "\t\t\t\t\"year\":\"2017\"\n" +
-              "\t\t\t}\n" +
-              "\t\t\t\n" +
-              "\t\t\t]\n" +
-              "\t}\n" +
               "\t]\n" +
               "}";
    }
@@ -390,43 +310,15 @@ public class SignUpDoctorTest {
               "\"title\":\"Dr\",\n" +
               "\n" +
               "\"specialties\":[\n" +
-              "\t{\"name\": \"Nephrology\"},\n" +
-              "\t{\"name\": \"Cardiology\"}\n" +
+              "\t{\"name\": \"Allergist\"},\n" +
+              "\t{\"name\": \"Dentist\"}\n" +
               "\t],\n" +
               "\n" +
               "\"languages\": [\n" +
               "\t{\"language\": \"Arabic\"},\n" +
               "\t{\"language\": \"English\"}\n" +
-              "\t],\n" +
-              "\t\n" +
-              "\t\"employmentHistories\":\n" +
-              "\t[\n" +
-              "\t{\n" +
-              "\t\t\"paymentCredentials\":\"Payment credentials\",\n" +
-              "\t\t\"registrationNumber\":\"N98765789\",\n" +
-              "\t\t\"timeConsultation\":\"30\",\n" +
-              "\t\t\"dayStart\":\"28800000000000\",\n" +
-              "\t\t\"dayEnd\":\"61200000000000\",\n" +
-              "\t\t\"hospitalAffiliation\":\"Hospital Affiliation\",\n" +
-              "\t\t\"practice\":\"2\",\n" +
-              "\t\t\n" +
-              "\t\t\"universities\":[\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Name university 1\",\n" +
-              "\t\t\t\t\"degree\":\"Bachelor\",\n" +
-              "\t\t\t\t\"year\":\"2015\"\n" +
-              "\t\t\t},\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Name university 2\",\n" +
-              "\t\t\t\t\"degree\":\"Bachelor of Medicine\",\n" +
-              "\t\t\t\t\"year\":\"2017\"\n" +
-              "\t\t\t}\n" +
-              "\t\t\t\n" +
-              "\t\t\t]\n" +
-              "\t}\n" +
               "\t]\n" +
               "}";
-
 
       // #2 POST RESPONSE
       HttpResponse<JsonNode> actualResponse;

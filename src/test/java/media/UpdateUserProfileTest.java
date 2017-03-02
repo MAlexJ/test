@@ -1,5 +1,6 @@
 package media;
 
+import controller.test.user.SignUpDoctorTest;
 import controller.test.user.SignUpPatientTest;
 import model.User;
 import org.json.JSONArray;
@@ -269,7 +270,7 @@ public class UpdateUserProfileTest {
       String passwordPATIENT = "12345678";
       String loginModePATIENT = "EMAIL";
 
-      User patient = SignUpPatientTest.singUn_To_App_Patient(emailPATIENT, passwordPATIENT, loginModePATIENT, latitudePATIENT.toString(), longitudePATIENT.toString());
+      User patient = SignUpDoctorTest.singUn_To_App_Doctor(emailPATIENT, passwordPATIENT, loginModePATIENT, latitudePATIENT.toString(), longitudePATIENT.toString());
       String sessionToken = patient.getSessionToken();
       int id = patient.getId();
 

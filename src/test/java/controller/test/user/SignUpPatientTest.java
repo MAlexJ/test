@@ -194,34 +194,6 @@ public class SignUpPatientTest {
               "\"insuranceCompany\":\"Insurance Company\",\n" +
               "\"occupation\":\"Occupation\",\n" +
               "\"streetAddress\":\"Street Address\",\n" +
-              "\"patientHistories\":\n" +
-              "[ \n" +
-              "{\t\n" +
-              "\t\"chronicMedicalConditions\":[\n" +
-              "\t\t{\n" +
-              "\t\t\t\"name\":\"Chronic Medical Condition 1\"\n" +
-              "\t\t},\n" +
-              "\t\t{\n" +
-              "\t\t\t\"name\":\"Chronic Medical Condition 2\"\n" +
-              "\t\t}\n" +
-              "\t],\n" +
-              "\n" +
-              "\t\"hospital\":\"Hospital Name\",\n" +
-              "\t\"date\":\"1488899927\",\t\n" +
-              "\n" +
-              "\t\t\"chronicMedications\":[\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Chronic Medication 1\",\n" +
-              "\t\t\t\t\"description\":\"Reason for taking the chronic medication\"\n" +
-              "\t\t\t},\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Chronic Medication 2\",\n" +
-              "\t\t\t\t\"description\":\"Reason for taking the chronic medication\"\n" +
-              "\t\t\t}\n" +
-              "\t\t]\n" +
-              "}\n" +
-              "\n" +
-              "],\n" +
               "\"religion\":\"Religion\"\n" +
               "}";
    }
@@ -246,34 +218,6 @@ public class SignUpPatientTest {
               "\"insuranceCompany\":\"Insurance Company\",\n" +
               "\"occupation\":\"Occupation\",\n" +
               "\"streetAddress\":\"Street Address\",\n" +
-              "\"patientHistories\":\n" +
-              "[ \n" +
-              "{\t\n" +
-              "\t\"chronicMedicalConditions\":[\n" +
-              "\t\t{\n" +
-              "\t\t\t\"name\":\"Chronic Medical Condition 1\"\n" +
-              "\t\t},\n" +
-              "\t\t{\n" +
-              "\t\t\t\"name\":\"Chronic Medical Condition 2\"\n" +
-              "\t\t}\n" +
-              "\t],\n" +
-              "\n" +
-              "\t\"hospital\":\"Hospital Name\",\n" +
-              "\t\"date\":\"1488899927\",\t\n" +
-              "\n" +
-              "\t\t\"chronicMedications\":[\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Chronic Medication 1\",\n" +
-              "\t\t\t\t\"description\":\"Reason for taking the chronic medication\"\n" +
-              "\t\t\t},\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Chronic Medication 2\",\n" +
-              "\t\t\t\t\"description\":\"Reason for taking the chronic medication\"\n" +
-              "\t\t\t}\n" +
-              "\t\t]\n" +
-              "}\n" +
-              "\n" +
-              "],\n" +
               "\"religion\":\"Religion\"\n" +
               "}";
    }
@@ -302,34 +246,6 @@ public class SignUpPatientTest {
               "\"insuranceCompany\":\"Insurance Company\",\n" +
               "\"occupation\":\"Occupation\",\n" +
               "\"streetAddress\":\"Street Address\",\n" +
-              "\"patientHistories\":\n" +
-              "[ \n" +
-              "{\t\n" +
-              "\t\"chronicMedicalConditions\":[\n" +
-              "\t\t{\n" +
-              "\t\t\t\"name\":\"Chronic Medical Condition 1\"\n" +
-              "\t\t},\n" +
-              "\t\t{\n" +
-              "\t\t\t\"name\":\"Chronic Medical Condition 2\"\n" +
-              "\t\t}\n" +
-              "\t],\n" +
-              "\n" +
-              "\t\"hospital\":\"Hospital Name\",\n" +
-              "\t\"date\":\"1488899927\",\t\n" +
-              "\n" +
-              "\t\t\"chronicMedications\":[\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Chronic Medication 1\",\n" +
-              "\t\t\t\t\"description\":\"Reason for taking the chronic medication\"\n" +
-              "\t\t\t},\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Chronic Medication 2\",\n" +
-              "\t\t\t\t\"description\":\"Reason for taking the chronic medication\"\n" +
-              "\t\t\t}\n" +
-              "\t\t]\n" +
-              "}\n" +
-              "\n" +
-              "],\n" +
               "\"religion\":\"Religion\"\n" +
               "}";
    }
@@ -360,34 +276,6 @@ public class SignUpPatientTest {
               "\"insuranceCompany\":\"Insurance Company\",\n" +
               "\"occupation\":\"Occupation\",\n" +
               "\"streetAddress\":\"Street Address\",\n" +
-              "\"patientHistories\":\n" +
-              "[ \n" +
-              "{\t\n" +
-              "\t\"chronicMedicalConditions\":[\n" +
-              "\t\t{\n" +
-              "\t\t\t\"name\":\"Chronic Medical Condition 1\"\n" +
-              "\t\t},\n" +
-              "\t\t{\n" +
-              "\t\t\t\"name\":\"Chronic Medical Condition 2\"\n" +
-              "\t\t}\n" +
-              "\t],\n" +
-              "\n" +
-              "\t\"hospital\":\"Hospital Name\",\n" +
-              "\t\"date\":\"1488899927\",\t\n" +
-              "\n" +
-              "\t\t\"chronicMedications\":[\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Chronic Medication 1\",\n" +
-              "\t\t\t\t\"description\":\"Reason for taking the chronic medication\"\n" +
-              "\t\t\t},\n" +
-              "\t\t\t{\n" +
-              "\t\t\t\t\"name\":\"Chronic Medication 2\",\n" +
-              "\t\t\t\t\"description\":\"Reason for taking the chronic medication\"\n" +
-              "\t\t\t}\n" +
-              "\t\t]\n" +
-              "}\n" +
-              "\n" +
-              "],\n" +
               "\"religion\":\"Religion\"\n" +
               "}";
 
