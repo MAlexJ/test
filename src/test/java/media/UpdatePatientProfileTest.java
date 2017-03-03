@@ -59,6 +59,9 @@ public class UpdatePatientProfileTest {
       assertEquals(Boolean.TRUE, status);
       assertEquals(new Integer(200), statusCode);
       System.out.println(response);
+
+
+      // TODO >>> check chronicMedications
    }
 
 
@@ -99,6 +102,7 @@ public class UpdatePatientProfileTest {
       assertEquals(new Integer(200), statusCode);
       System.out.println(response);
 
+      // TODO >>> check chronicMedicalConditions
    }
 
    @Test
