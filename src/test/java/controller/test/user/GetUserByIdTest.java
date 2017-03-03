@@ -19,7 +19,7 @@ import static junit.framework.TestCase.assertEquals;
 public class GetUserByIdTest {
 
    @Test
-   public void test() {
+   public void test_PATIENT() {
 
       // #1 Create PATIENT
       String emailPATIENT = "patient_p" + new Random().nextInt(243656300) + "@gmail.com";
@@ -29,6 +29,31 @@ public class GetUserByIdTest {
       String loginModePATIENT = "EMAIL";
 
       User patient = SignUpPatientTest.singUn_To_App_Patient(emailPATIENT, passwordPATIENT, loginModePATIENT, latitudePATIENT.toString(), longitudePATIENT.toString());
+      String sessionToken = patient.getSessionToken();
+      String email = patient.getEmail();
+
+      int id = patient.getId();
+      System.out.println("Patient id: " + id);
+
+      JSONObject jsonObject = getUserById(id);
+
+      String emailActual = (String) jsonObject.getJSONObject("user").get("email");
+      String sessionTokenActual = (String) jsonObject.getJSONObject("user").get("sessionToken");
+
+      assertEquals(email, emailActual);
+      assertEquals(sessionToken, sessionTokenActual);
+   }
+
+   @Test
+   public void test_DOCTOR() {
+      // #1 Create PATIENT
+      String emailPATIENT = "doctor_p" + new Random().nextInt(243656300) + "@gmail.com";
+      Double latitudePATIENT = LATITUDE + new Random().nextInt(10);
+      Double longitudePATIENT = LONGITUDE + new Random().nextInt(20);
+      String passwordPATIENT = "12345678";
+      String loginModePATIENT = "EMAIL";
+
+      User patient = SignUpDoctorTest.singUn_To_App_Doctor(emailPATIENT, passwordPATIENT, loginModePATIENT, latitudePATIENT.toString(), longitudePATIENT.toString());
       String sessionToken = patient.getSessionToken();
       String email = patient.getEmail();
 
