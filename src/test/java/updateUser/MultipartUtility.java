@@ -1,4 +1,4 @@
-package media;
+package updateUser;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -30,7 +30,7 @@ public class MultipartUtility {
       httpConn.setUseCaches(false);
       httpConn.setDoOutput(true); // indicates POST method
       httpConn.setDoInput(true);
-      httpConn.setReadTimeout(10000);
+      httpConn.setReadTimeout(30000);
       httpConn.setConnectTimeout(15000);
       httpConn.setRequestMethod("POST");                                                           // TODO <<<<<
 

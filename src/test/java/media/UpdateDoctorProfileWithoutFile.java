@@ -8,6 +8,7 @@ import model.University;
 import model.User;
 import org.json.JSONObject;
 import org.junit.Test;
+import updateUser.MultipartUtility;
 
 import java.io.File;
 import java.io.IOException;

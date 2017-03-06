@@ -6,6 +6,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controller.test.user.SignUpDoctorTest;
 import controller.test.user.SignUpPatientTest;
+import model.AppointmentVO;
 import model.User;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -45,15 +46,21 @@ public class StoreAppointmentTest {
       storeAppointmentHireDoctor(patient, doctor);
    }
 
-   public static void storeAppointmentHireDoctor(User patient, User doctor) {
+   public static AppointmentVO storeAppointmentHireDoctor(User patient, User doctor) {
+
+      AppointmentVO appointmentVO = new AppointmentVO();
+      appointmentVO.setPatientEmail(patient.getEmail());
+      appointmentVO.setAppointmentMode("videoCall");
+      appointmentVO.setAppointmentDate(1453095300000L);
+      appointmentVO.setAppointmentTime(1477000000000L);
 
       String request = "{\n" +
               "\"email\": \"" + patient.getEmail() + "\",\n" +
               "\"sessionToken\": \"" + patient.getSessionToken() + "\",\n" +
               "\n" +
-              "\"bookingDate\": \"1453095300000\",\n" +
-              "\"bookingTime\": \"1453095300000\",\n" +
-              "\"bookingMode\": \"videoCall\",\n" +
+              "\"bookingDate\": \"" + appointmentVO.getAppointmentDate() + "\",\n" +
+              "\"bookingTime\": \"" + appointmentVO.getAppointmentTime() + "\",\n" +
+              "\"bookingMode\": \"" + appointmentVO.getAppointmentMode() + "\",\n" +
               "\n" +
               "\"doctorInfo\": {\n" +
               "\t\"hiredDoc\": \"" + doctor.getEmail() + "\",\n" +
@@ -138,6 +145,8 @@ public class StoreAppointmentTest {
 
       // check response
       assertRespose(jsonObject);
+
+      return appointmentVO;
 
    }
 

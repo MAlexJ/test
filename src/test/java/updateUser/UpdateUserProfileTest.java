@@ -1,4 +1,4 @@
-package media;
+package updateUser;
 
 import controller.test.user.SignUpDoctorTest;
 import controller.test.user.SignUpPatientTest;
