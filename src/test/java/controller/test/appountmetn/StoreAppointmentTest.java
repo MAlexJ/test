@@ -43,7 +43,14 @@ public class StoreAppointmentTest {
       User doctor = SignUpDoctorTest.singUn_To_App_Doctor(emailDOCTOR, passwordDOCTOR, loginModeDOCTOR, latitudeDOCTOR.toString(), longitudeDOCTOR.toString());
 
       // test
+      long start = System.currentTimeMillis();
+
       storeAppointmentHireDoctor(patient, doctor);
+
+      long end = System.currentTimeMillis();
+
+      System.out.println("Time store appointment : " + ((double) (end - start) / 1000));
+
    }
 
    public static AppointmentVO storeAppointmentHireDoctor(User patient, User doctor) {

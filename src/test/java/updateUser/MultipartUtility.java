@@ -30,8 +30,8 @@ public class MultipartUtility {
       httpConn.setUseCaches(false);
       httpConn.setDoOutput(true); // indicates POST method
       httpConn.setDoInput(true);
-      httpConn.setReadTimeout(30000);
-      httpConn.setConnectTimeout(15000);
+      httpConn.setReadTimeout(50000);
+      httpConn.setConnectTimeout(30000);
       httpConn.setRequestMethod("POST");                                                           // TODO <<<<<
 
 //      httpConn.setRequestProperty("Content-Type", "application/json");

@@ -48,7 +48,7 @@ public class SignUpDoctorTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"consultationFee\":0,\"latitude\":\"" + latitude.toString() + "\",\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"FACEBOOK\"}],\"title\":\"Dr\"},\"status\":true,\"sessionToken\":\"" + sessionToken + "\",\"statusCode\":200,\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"consultationFee\":0,\"latitude\":\"" + latitude.toString() + "\",\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"loginTypes\":[{\"loginMode\":\"FACEBOOK\"}],\"title\":\"Dr\"},\"status\":true,\"sessionToken\":\"" + sessionToken + "\",\"statusCode\":200,\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -81,7 +81,7 @@ public class SignUpDoctorTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"GPLUS\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"loginTypes\":[{\"loginMode\":\"GPLUS\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -116,7 +116,7 @@ public class SignUpDoctorTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"EMAIL\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"loginTypes\":[{\"loginMode\":\"EMAIL\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -165,7 +165,7 @@ public class SignUpDoctorTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"languages\":[{\"language\":\"Arabic\"},{\"language\":\"English\"}],\"loginTypes\":[{\"loginMode\":\"EMAIL\"},{\"loginMode\":\"FACEBOOK\"},{\"loginMode\":\"GPLUS\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"religion\":\"Religion\",\"longitude\":\"" + longitude.toString() + "\",\"latitude\":\"" + latitude.toString() + "\",\"consultationFee\":0,\"dateOfBirth\":1231797600000,\"deviceId\":\"307564180daba553\",\"deviceModel\":\"Meizu m2 note\",\"email\":\"" + email + "\",\"gender\":\"male\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Maximov\",\"locale\":\"ru_RU\",\"mobile\":\"77777777777\",\"osType\":\"android\",\"osVersion\":\"22\",\"rating\":0,\"role\":\"DOCTOR\",\"timeZoneId\":\"Europe/Kiev\",\"versionCode\":\"1\",\"loginTypes\":[{\"loginMode\":\"EMAIL\"},{\"loginMode\":\"FACEBOOK\"},{\"loginMode\":\"GPLUS\"}],\"title\":\"Dr\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -196,18 +196,8 @@ public class SignUpDoctorTest {
               "\"dateOfBirth\":\"1231797600000\",\n" +
               "\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\n" +
               "\n" +
-              "\"title\":\"Dr\",\n" +
+              "\"title\":\"Dr\"" +
               "\n" +
-              "\"specialties\":[\n" +
-              "\t{\"name\": \"Allergist\"},\n" +
-              "\t{\"name\": \"Dentist\"}\n" +
-              "\t],\n" +
-              "\n" +
-              "\"languages\": [\n" +
-              "\t{\"language\": \"Arabic\"},\n" +
-              "\t{\"language\": \"English\"}\n" +
-              "\t]\n" +
-              "\t\n" +
               "}\n";
    }
 
@@ -232,17 +222,8 @@ public class SignUpDoctorTest {
               "\"dateOfBirth\":\"1231797600000\",\n" +
               "\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\n" +
               "\n" +
-              "\"title\":\"Dr\",\n" +
+              "\"title\":\"Dr\"" +
               "\n" +
-              "\"specialties\":[\n" +
-              "\t{\"name\": \"Allergist\"},\n" +
-              "\t{\"name\": \"Dentist\"}\n" +
-              "\t],\n" +
-              "\n" +
-              "\"languages\": [\n" +
-              "\t{\"language\": \"Arabic\"},\n" +
-              "\t{\"language\": \"English\"}\n" +
-              "\t]\n" +
               "}\n";
    }
 
@@ -268,17 +249,7 @@ public class SignUpDoctorTest {
               "\"dateOfBirth\":\"1231797600000\",\n" +
               "\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\n" +
               "\n" +
-              "\"title\":\"Dr\",\n" +
-              "\n" +
-              "\"specialties\":[\n" +
-              "\t{\"name\": \"Allergist\"},\n" +
-              "\t{\"name\": \"Dentist\"}\n" +
-              "\t],\n" +
-              "\n" +
-              "\"languages\": [\n" +
-              "\t{\"language\": \"Arabic\"},\n" +
-              "\t{\"language\": \"English\"}\n" +
-              "\t]\n" +
+              "\"title\":\"Dr\"" +
               "}";
    }
 
@@ -307,17 +278,7 @@ public class SignUpDoctorTest {
               "\"dateOfBirth\":\"1231797600000\",\n" +
               "\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\n" +
               "\n" +
-              "\"title\":\"Dr\",\n" +
-              "\n" +
-              "\"specialties\":[\n" +
-              "\t{\"name\": \"Allergist\"},\n" +
-              "\t{\"name\": \"Dentist\"}\n" +
-              "\t],\n" +
-              "\n" +
-              "\"languages\": [\n" +
-              "\t{\"language\": \"Arabic\"},\n" +
-              "\t{\"language\": \"English\"}\n" +
-              "\t]\n" +
+              "\"title\":\"Dr\"" +
               "}";
 
       // #2 POST RESPONSE

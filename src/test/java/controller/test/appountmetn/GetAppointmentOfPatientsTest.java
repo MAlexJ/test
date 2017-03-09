@@ -47,7 +47,14 @@ public class GetAppointmentOfPatientsTest {
       AppointmentVO expectAppointment = StoreAppointmentTest.storeAppointmentHireDoctor(patient, doctor);
 
       // #4 get appointment
+
+      long start = System.currentTimeMillis();
+
       JSONObject jsonObject = getAppointmentOfPatients(doctor);
+
+      long end = System.currentTimeMillis();
+
+      System.out.println("Time getAppointmentOfPatients : " + ((double) (end - start) / 1000));
 
       // #5 Assert
       String actualEmail = jsonObject.get("email").toString();

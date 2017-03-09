@@ -74,7 +74,7 @@ public class StoreAppointmentErrorTest {
       Integer statusCode = (Integer) jsonObject.get("statusCode");
       Boolean status = (Boolean) jsonObject.get("status");
 
-      assertEquals("Doctor not found.", message);
+      assertEquals("User with email: "+emailDOCTOR+" not found", message);
       assertEquals(new Integer(200), statusCode);
       assertEquals(Boolean.FALSE, status);
 
