@@ -19,6 +19,7 @@ import java.util.Random;
 
 import static constants.Constant.*;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 public class GetAppointmentOfPatientsTest {
 
@@ -72,9 +73,15 @@ public class GetAppointmentOfPatientsTest {
       AppointmentVO actualAppointment = expectAppointmentList.get(0);
 
       assertEquals(expectAppointment.getAppointmentDate(), actualAppointment.getAppointmentDate());
-      assertEquals(expectAppointment.getAppointmentTime(), actualAppointment.getAppointmentTime());
       assertEquals(expectAppointment.getPatientEmail(), actualAppointment.getPatientEmail());
       assertEquals(expectAppointment.getAppointmentMode(), actualAppointment.getAppointmentMode());
+
+      assertTrue(!actualAppointment.getPatientName().isEmpty());
+      assertTrue(!actualAppointment.getPatientEmail().isEmpty());
+
+      System.out.println(actualAppointment.getPatientDes());
+
+      assertTrue(!actualAppointment.getPatientDes().isEmpty());
    }
 
 

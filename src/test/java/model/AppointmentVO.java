@@ -12,7 +12,7 @@ public class AppointmentVO implements Serializable {
    private String patientImageUrl;
    private String patientName;
 
-   private long appointmentTime;
+   //   private long appointmentTime;
    private long appointmentDate;
    private String appointmentMode;
    private String patientDes;
@@ -52,14 +52,6 @@ public class AppointmentVO implements Serializable {
 
    public void setPatientName(String patientName) {
       this.patientName = patientName;
-   }
-
-   public long getAppointmentTime() {
-      return appointmentTime;
-   }
-
-   public void setAppointmentTime(long appointmentTime) {
-      this.appointmentTime = appointmentTime;
    }
 
    public long getAppointmentDate() {

@@ -72,7 +72,7 @@ public class UpdateUserProfileTest {
         int id = patient.getId();
 
         String email = "new_email" + new Date().getTime() + "@gmail.com";
-        String phone = "0987654321";
+        String mobile = "0987654321";
         String gender = "Male";
         String profession = "New Profassion Test";
         String latitude = "111.11111";
@@ -90,7 +90,7 @@ public class UpdateUserProfileTest {
         MultipartUtility multipart = new MultipartUtility(URL_UPDATE_USER_PROFILE, "UTF-8");
         multipart.addFormField("email", email);
         multipart.addFormField("sessionToken", sessionToken);
-        multipart.addFormField("phone", phone);
+        multipart.addFormField("mobile", mobile);
         multipart.addFormField("gender", gender);
         multipart.addFormField("profession", profession);
         multipart.addFormField("latitude", latitude);
@@ -124,7 +124,7 @@ public class UpdateUserProfileTest {
         assertEquals(sessionToken, (String) userById.getJSONObject("user").get("sessionToken"));
         assertEquals(gender.toLowerCase(), (String) userById.getJSONObject("user").get("gender"));
         assertEquals(profession, (String) userById.getJSONObject("user").get("profession"));
-        assertEquals(phone, (String) userById.getJSONObject("user").get("phone"));
+        assertEquals(mobile, (String) userById.getJSONObject("user").get("mobile"));
         assertEquals(fullName, (String) userById.getJSONObject("user").get("fullName"));
         assertEquals(religion, (String) userById.getJSONObject("user").get("religion"));
         assertEquals(Long.parseLong(dateOfBirth), userById.getJSONObject("user").get("dateOfBirth"));

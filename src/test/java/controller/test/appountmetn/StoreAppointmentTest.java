@@ -59,14 +59,12 @@ public class StoreAppointmentTest {
       appointmentVO.setPatientEmail(patient.getEmail());
       appointmentVO.setAppointmentMode("videoCall");
       appointmentVO.setAppointmentDate(1453095300000L);
-      appointmentVO.setAppointmentTime(1477000000000L);
 
       String request = "{\n" +
               "\"email\": \"" + patient.getEmail() + "\",\n" +
               "\"sessionToken\": \"" + patient.getSessionToken() + "\",\n" +
               "\n" +
               "\"bookingDate\": \"" + appointmentVO.getAppointmentDate() + "\",\n" +
-              "\"bookingTime\": \"" + appointmentVO.getAppointmentTime() + "\",\n" +
               "\"bookingMode\": \"" + appointmentVO.getAppointmentMode() + "\",\n" +
               "\n" +
               "\"doctorInfo\": {\n" +

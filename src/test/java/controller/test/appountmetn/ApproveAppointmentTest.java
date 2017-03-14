@@ -96,7 +96,6 @@ public class ApproveAppointmentTest {
       AppointmentVO expectAppointment = actualAppointmentList.get(0);
 
       assertEquals(actualAppointment.getAppointmentDate(), expectAppointment.getAppointmentDate());
-      assertEquals(actualAppointment.getAppointmentTime(), expectAppointment.getAppointmentTime());
       assertEquals(actualAppointment.getAppointmentId(), expectAppointment.getAppointmentId());
       assertEquals("CONFIRM", expectAppointment.getAppointmentStatus());
       assertEquals(actualAppointment.getPatientDes(), expectAppointment.getPatientDes());
