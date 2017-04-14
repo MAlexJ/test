@@ -41,7 +41,7 @@ public class SignUpPatientTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"consultationFee\":0,\"dateOfBirth\":488160000000,\"email\":\"" + email + "\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Test\",\"latitude\":\"" + latitude + "\",\"longitude\":\"" + longitude + "\",\"rating\":0,\"role\":\"PATIENT\",\"loginTypes\":[{\"loginMode\":\"FACEBOOK\"}],\"identificationCard\":\"Identification Card\",\"insuranceCompany\":\"Insurance Company\",\"occupation\":\"Occupation\",\"streetAddress\":\"Street Address\",\"religion\":\"Religion\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"consultationFee\":0,\"dateOfBirth\":488160000000,\"email\":\"" + email + "\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Test\",\"latitude\":\"" + latitude + "\",\"longitude\":\"" + longitude + "\",\"rating\":0,\"role\":\"PATIENT\",\"loginTypes\":[{\"loginMode\":\"FACEBOOK\"}],\"identificationCard\":\"Identification Card\",\"isFullUserProfile\":false,\"insuranceCompany\":\"Insurance Company\",\"occupation\":\"Occupation\",\"streetAddress\":\"Street Address\",\"religion\":\"Religion\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -81,7 +81,7 @@ public class SignUpPatientTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"consultationFee\":0,\"dateOfBirth\":488160000000,\"email\":\"" + email + "\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Test\",\"latitude\":\"" + latitude + "\",\"longitude\":\"" + longitude + "\",\"rating\":0,\"role\":\"PATIENT\",\"loginTypes\":[{\"loginMode\":\"GPLUS\"}],\"identificationCard\":\"Identification Card\",\"insuranceCompany\":\"Insurance Company\",\"occupation\":\"Occupation\",\"streetAddress\":\"Street Address\",\"religion\":\"Religion\"},\"sessionToken\":\"" + sessionToken + "\",\"status\":true,\"statusCode\":200,\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"consultationFee\":0,\"dateOfBirth\":488160000000,\"email\":\"" + email + "\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Test\",\"latitude\":\"" + latitude + "\",\"longitude\":\"" + longitude + "\",\"rating\":0,\"role\":\"PATIENT\",\"loginTypes\":[{\"loginMode\":\"GPLUS\"}],\"identificationCard\":\"Identification Card\",\"isFullUserProfile\":false,\"insuranceCompany\":\"Insurance Company\",\"occupation\":\"Occupation\",\"streetAddress\":\"Street Address\",\"religion\":\"Religion\"},\"sessionToken\":\"" + sessionToken + "\",\"status\":true,\"statusCode\":200,\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -116,7 +116,7 @@ public class SignUpPatientTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"consultationFee\":0,\"dateOfBirth\":488160000000,\"email\":\"" + email + "\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Test\",\"latitude\":\"" + latitude + "\",\"longitude\":\"" + longitude + "\",\"rating\":0,\"role\":\"PATIENT\",\"loginTypes\":[{\"loginMode\":\"EMAIL\"}],\"identificationCard\":\"Identification Card\",\"insuranceCompany\":\"Insurance Company\",\"occupation\":\"Occupation\",\"streetAddress\":\"Street Address\",\"religion\":\"Religion\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"consultationFee\":0,\"dateOfBirth\":488160000000,\"email\":\"" + email + "\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Test\",\"latitude\":\"" + latitude + "\",\"longitude\":\"" + longitude + "\",\"rating\":0,\"role\":\"PATIENT\",\"loginTypes\":[{\"loginMode\":\"EMAIL\"}],\"identificationCard\":\"Identification Card\",\"isFullUserProfile\":false,\"insuranceCompany\":\"Insurance Company\",\"occupation\":\"Occupation\",\"streetAddress\":\"Street Address\",\"religion\":\"Religion\"},\"status\":true,\"statusCode\":200,\"sessionToken\":\"" + sessionToken + "\",\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT
@@ -162,7 +162,7 @@ public class SignUpPatientTest {
       Integer id = (Integer) jsonObject.getJSONObject("user").get("userId");
       String sessionToken = (String) jsonObject.get("sessionToken");
 
-      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"consultationFee\":0,\"chronicMedications\":[],\"dateOfBirth\":488160000000,\"email\":\"" + email + "\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Test\",\"latitude\":\"" + latitude + "\",\"longitude\":\"" + longitude + "\",\"rating\":0,\"role\":\"PATIENT\",\"loginTypes\":[{\"loginMode\":\"EMAIL\"},{\"loginMode\":\"FACEBOOK\"},{\"loginMode\":\"GPLUS\"}],\"languages\":[],\"identificationCard\":\"Identification Card\",\"chronicMedicalConditions\":[],\"insuranceCompany\":\"Insurance Company\",\"occupation\":\"Occupation\",\"streetAddress\":\"Street Address\",\"religion\":\"Religion\"},\"sessionToken\":\"" + sessionToken + "\",\"status\":true,\"statusCode\":200,\"message\":\"Sign Up successful\"}";
+      String expectResponse = "{\"user\":{\"userId\":" + id + ",\"consultationFee\":0,\"chronicMedications\":[],\"dateOfBirth\":488160000000,\"email\":\"" + email + "\",\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\"fullName\":\"Alex Test\",\"latitude\":\"" + latitude + "\",\"longitude\":\"" + longitude + "\",\"rating\":0,\"role\":\"PATIENT\",\"loginTypes\":[{\"loginMode\":\"EMAIL\"},{\"loginMode\":\"FACEBOOK\"},{\"loginMode\":\"GPLUS\"}],\"languages\":[],\"identificationCard\":\"Identification Card\",\"isFullUserProfile\":false,\"chronicMedicalConditions\":[],\"insuranceCompany\":\"Insurance Company\",\"occupation\":\"Occupation\",\"streetAddress\":\"Street Address\",\"religion\":\"Religion\"},\"sessionToken\":\"" + sessionToken + "\",\"status\":true,\"statusCode\":200,\"message\":\"Sign Up successful\"}";
       JsonNode expectResponseBody = new JsonNode(expectResponse);
 
       // #5 ASSERT

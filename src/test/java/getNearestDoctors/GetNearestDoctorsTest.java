@@ -27,7 +27,6 @@ public class GetNearestDoctorsTest {
    // 1. create patient with latitude and longitude
    // 2. create doctor with latitude and longitude
    // 3. find doctor use API "getNearestDoctors"
-   @Ignore
    @Test
    public void test_find_doctor() throws UnirestException {
 
@@ -129,7 +128,6 @@ public class GetNearestDoctorsTest {
 
       HttpResponse<JsonNode> response = Unirest.post(URL_GET_NEAREST_DOCTOR)
               .header("content-type", "application/json")
-              .header("cache-control", "no-cache")
               .body(query)
               .asJson();
 
