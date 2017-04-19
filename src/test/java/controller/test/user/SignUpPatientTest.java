@@ -169,6 +169,52 @@ public class SignUpPatientTest {
       assertEquals(expectResponseBody.toString(), actualResponseBody.toString());
    }
 
+   @Test
+   public void testWithoutCoordinat() {
+      String request = "{\n" +
+              "\"fullName\":\"Alex Test\",\n" +
+              "\"loginMode\":\"EMAIL\",\n" +
+              "\"email\":\"email" + new Random().nextInt() + "@" + new Random().nextInt() + ".com\",\n" +
+              "\"password\":\"1234444\",\n" +
+              "\"role\":\"Patient\",\n" +
+              "\"imageUrl\":\"http://www.sande.cl/Images/Sitio/loginnew2.png\",\n" +
+              "\"dateOfBirth\":\"488160000000\",\n" +
+              "\n" +
+              "\"latitude\": \"\",\n" +
+              "\"longitude\": \"\",\n" +
+              "\n" +
+              "\n" +
+              "\"languages\": [\n" +
+              "\t{\"language\": \"Arabic\"},\n" +
+              "\t{\"language\": \"English\"}\n" +
+              "\t],\n" +
+              "\n" +
+              "\n" +
+              "\"identificationCard\":\"Identification Card\",\n" +
+              "\"insuranceCompany\":\"Insurance Company\",\n" +
+              "\"occupation\":\"Occupation\",\n" +
+              "\"streetAddress\":\"Street Address\",\n" +
+              "\"religion\":\"Religion\"\n" +
+              "}";
+
+
+      // #2 POST RESPONSE
+      HttpResponse<JsonNode> actualResponse;
+      try {
+         actualResponse = Unirest.post(URL_SIGN_UP)
+                 .header("content-type", "application/json")
+                 .header("cache-control", "no-cache")
+                 .body(request).asJson();
+      } catch (UnirestException e) {
+         throw new RuntimeException("error sing up doctor");
+      }
+
+      // get values
+      JSONObject jsonObject = actualResponse.getBody().getObject();
+
+      String status = (String) jsonObject.get("message");
+      assertEquals("Sign Up successful", status);
+   }
 
    // *** UTIL method *****//
 
