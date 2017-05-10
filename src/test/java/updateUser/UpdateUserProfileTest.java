@@ -46,15 +46,19 @@ public class UpdateUserProfileTest {
       String sessionToken = "XxXxX";
 
       // #2 post
-      JSONObject jsonObject = send(sessionToken);
-      Boolean status = (Boolean) jsonObject.get("status");
-      String message = (String) jsonObject.get("message");
-      Integer statusCode = (Integer) jsonObject.get("statusCode");
+      try {
+         JSONObject jsonObject = send(sessionToken);
+         Boolean status = (Boolean) jsonObject.get("status");
+         String message = (String) jsonObject.get("message");
+         Integer statusCode = (Integer) jsonObject.get("statusCode");
 
-      // #3 assert
-      assertEquals("Error validating session token", message);
-      assertEquals(Boolean.FALSE, status);
-      assertEquals(new Integer(200), statusCode);
+         // #3 assert
+         assertEquals("Error validating session token", message);
+         assertEquals(Boolean.FALSE, status);
+         assertEquals(new Integer(200), statusCode);
+      } catch (IOException ex){
+         assertEquals("Server returned non-OK status: 401", ex.getMessage());
+      }
    }
 
 

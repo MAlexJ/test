@@ -115,7 +115,7 @@ public class GetNearestDoctorsFilterTest {
               "  \"speciality\":\"\",\n" +
               "  \"language\":\"\",\n" +
               "  \"doctorName\":\"\",\n" +
-              "  \"locationAddress\":\"Kiev\",\n" +
+              "  \"locationAddress\":\"Kharkiv Oblast, Ukraine\",\n" +
               "  \"longitude\":" + longitudePATIENT + ", \n" +
               "  \"latitude\":" + latitudePATIENT + ", \n" +
               "  \"listIndex\":1\n" +
