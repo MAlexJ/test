@@ -75,7 +75,7 @@ public class StoreAppointmentTest {
               "},\n" +
               "\n" +
               "\"symptoms\": [{\n" +
-              "\t\"symptomName\": \"headache 1\",\n" +
+              "\t\"symptomName\": \"Symptom 2\",\n" +
               "\t\"symptomDescription\": \n" +
               "\t\t\t[\n" +
               "\t\t\t\t{\n" +
@@ -103,29 +103,17 @@ public class StoreAppointmentTest {
               "\t}, \n" +
               "\n" +
               "\t{\n" +
-              "\t\"symptomName\": \"headache 2\",\n" +
+              "\t\"symptomName\": \"headache new symptom\",\n" +
               "\t\"symptomDescription\": \n" +
               "\t\t[\n" +
               "\t\t\t{\n" +
-              "\t\t\t\t\"symptomDescriptionName\": \"site 2\",\n" +
-              "\t\t\t\t\"symptomDescriptionData\": \n" +
-              "\t\t\t\t\t{\n" +
-              "\t\t\t\t\t\t\"symptomsValue\": \"fullSided 2\"\n" +
-              "\t\t\t\t\t}\n" +
+              "\t\t\t\t\"symptomDescriptionName\": \"When did it happen\"" +
               "\t\t\t}, \n" +
               "\t\t\t{\n" +
-              "\t\t\t\t\"symptomDescriptionName\": \"onset 2\",\n" +
-              "\t\t\t\t\"symptomDescriptionData\": \n" +
-              "\t\t\t\t\t{ \n" +
-              "\t\t\t\t\t\t\"symptomsValue\": \"sudden 2\"\n" +
-              "\t\t\t\t\t}\n" +
+              "\t\t\t\t\"symptomDescriptionName\": \"How did it happen\""+
               "\t\t\t}, \n" +
               "\t\t\t{\n" +
-              "\t\t\t\t\"symptomDescriptionName\": \"character 2\",\n" +
-              "\t\t\t\t\"symptomDescriptionData\": \n" +
-              "\t\t\t\t\t{\n" +
-              "\t\t\t\t\t\t\"symptomsValue\": \"throbbing 2\"\n" +
-              "\t\t\t\t\t}\n" +
+              "\t\t\t\t\"symptomDescriptionName\": \"what have u done about it\"" +
               "\t\t\t}\n" +
               "\t\t]\n" +
               "\t}\n" +
