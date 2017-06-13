@@ -296,6 +296,10 @@ public class GetNearestDoctorsFilterTimeTest {
 				  createDateMillis("11:30 AM"), createDateMillis("01:10 PM"), 15,
 				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
 
+		assertTrue(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
+				  createDateMillis("11:30 AM"), createDateMillis("01:10 PM"), 15,
+				  null, null));
+
 	}
 
 	private boolean findDoctorByFilter(long startDateDB, long endDateDB, long startAndroid, long endAndroid, long timeConsultation, Long startExcwptionTime, Long endExceptionTime) {
@@ -357,7 +361,6 @@ public class GetNearestDoctorsFilterTimeTest {
 		// check exception time
 		if (startExcwptionTime != null && endExceptionTime != null) {
 
-
 			LocalTime ltExTimeStart = convertLongToLong(startExcwptionTime);
 			LocalTime ltExTimeEnd = convertLongToLong(endExceptionTime);
 
@@ -367,7 +370,11 @@ public class GetNearestDoctorsFilterTimeTest {
 			System.out.println("EX TIME START: " + ltExTimeStart);
 			System.out.println("EX TIME END:   " + ltExTimeEnd);
 
-
+			//    |               |                     |               |
+			//    |--consultTime--| ---EXCEPTION_TIME-- |--consultTime--|
+			//    |               |                     |               |
+			//    | shift -15 min |                     | shift + 15 min|
+			//
 			LocalTime startShiftExTime = ltExTimeStart.minusMinutes(timeConsultation);
 			LocalTime endShiftExTime = ltExTimeEnd.plusMinutes(timeConsultation);
 			System.out.println("SHIFT EX TIME START: " + startShiftExTime);
