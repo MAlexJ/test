@@ -42,5 +42,4 @@ public class Constant {
    // URL_SEARCH_DOCTOR
    public final static String URL_SEARCH_DOCTOR = URL_BASE + "/user/searchDoctors";
 
-
 }

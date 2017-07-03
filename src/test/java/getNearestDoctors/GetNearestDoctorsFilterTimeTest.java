@@ -254,174 +254,8 @@ public class GetNearestDoctorsFilterTimeTest {
 
 		// doctor's schedule 22:00 - 06:00
 		assertTrue(setInterval(createDateMillis("08:00 PM"), createDateMillis("06:00 AM"), createDateMillis("11:00 PM"), createDateMillis("03:15 AM")));
-		assertTrue(setInterval(createDateMillis("08:00 PM"), createDateMillis("06:00 AM"), createDateMillis("08:00 PM"), createDateMillis("03:15 AM")));
-		assertTrue(setInterval(createDateMillis("08:00 PM"), createDateMillis("06:00 AM"), createDateMillis("08:00 PM"), createDateMillis("06:00 AM")));
-		assertTrue(setInterval(createDateMillis("08:00 PM"), createDateMillis("06:00 AM"), createDateMillis("06:00 PM"), createDateMillis("07:00 AM")));
 
 
-		// *****************************************************
-		// **************** EXCEPTION TIME  ********************
-		// *****************************************************
-
-		// doctor's schedule 10:00 - 18:00
-		assertTrue(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("09:00 AM"), createDateMillis("05:00 PM"), 15,
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
-
-		assertTrue(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("11:30 AM"), createDateMillis("01:30 PM"), 15,
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
-
-		assertTrue(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("11:00 AM"), createDateMillis("01:15 PM"), 15,
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
-
-		assertTrue(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("10:45 AM"), createDateMillis("01:15 PM"), 15,
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
-
-		assertFalse(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM"), 15,
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
-
-		assertFalse(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("11:01 AM"), createDateMillis("01:00 PM"), 15,
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
-
-		assertFalse(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("11:01 AM"), createDateMillis("01:14 PM"), 15,
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
-
-		assertFalse(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("11:30 AM"), createDateMillis("01:10 PM"), 15,
-				  createDateMillis("11:00 AM"), createDateMillis("01:00 PM")));
-
-		assertTrue(findDoctorByFilter(createDateMillis("10:00 AM"), createDateMillis("06:00 PM"),
-				  createDateMillis("11:30 AM"), createDateMillis("01:10 PM"), 15,
-				  null, null));
-
-	}
-
-	private boolean findDoctorByFilter(long startDateDB, long endDateDB, long startAndroid, long endAndroid, long timeConsultation, Long startExcwptionTime, Long endExceptionTime) {
-		// doctor's schedule
-		LocalTime localStartDateDB;
-		LocalTime localEndDateDB;
-
-		// time of search
-		LocalTime localStartAndroid;
-		LocalTime localEndAndroid;
-
-
-		// check to equals
-		if (startAndroid == endAndroid) {
-			return false;
-		}
-
-		// check date
-		if (startAndroid > endAndroid) {
-
-			// NOT NORMAL CASE
-
-			// start and end the time of doctor's schedule
-			LocalTime docTimeStartDB = convertLongToLong(startDateDB);   // start from DB
-			localStartDateDB = docTimeStartDB.plusHours(12);
-			LocalTime docTimeEndDb = convertLongToLong(endDateDB);   // end from DB
-			localEndDateDB = docTimeEndDb.plusHours(12);
-
-			// start and ens the time of search
-			localStartAndroid = convertLongToLongReversPlus(startAndroid);
-			localEndAndroid = convertLongToLongReversPlus(endAndroid);
-
-		} else {
-
-			// NORMAL CASE
-			localStartDateDB = convertLongToLong(startDateDB);
-			localEndDateDB = convertLongToLong(endDateDB);
-
-			localStartAndroid = convertLongToLong(startAndroid);
-			localEndAndroid = convertLongToLong(endAndroid);
-
-		}
-
-		System.out.println("  >> startDate: " + startDateDB + " time: " + new SimpleDateFormat("HH:mm").format(startDateDB));
-		System.out.println("  >> endDate: " + endDateDB + " time: " + new SimpleDateFormat("HH:mm").format(endDateDB));
-
-		System.out.println("  << intreval_Start: " + startAndroid + " time: " + new SimpleDateFormat("HH:mm").format(startAndroid));
-		System.out.println("  << intreval_End: " + endAndroid + " time: " + new SimpleDateFormat("HH:mm").format(endAndroid));
-
-		System.out.println();
-
-		// check interval: 15 or 30 minute from the star date
-		LocalTime timeShift = localStartAndroid.plusMinutes(timeConsultation);
-		if (localEndAndroid.compareTo(timeShift) == -1) {
-			return false;
-		}
-
-
-		// check exception time
-		if (startExcwptionTime != null && endExceptionTime != null) {
-
-			LocalTime ltExTimeStart = convertLongToLong(startExcwptionTime);
-			LocalTime ltExTimeEnd = convertLongToLong(endExceptionTime);
-
-			System.out.println("SEARCH TIME START: " + localStartAndroid);
-			System.out.println("SEARCH TIME END:   " + localEndAndroid);
-
-			System.out.println("EX TIME START: " + ltExTimeStart);
-			System.out.println("EX TIME END:   " + ltExTimeEnd);
-
-			//    |               |                     |               |
-			//    |--consultTime--| ---EXCEPTION_TIME-- |--consultTime--|
-			//    |               |                     |               |
-			//    | shift -15 min |                     | shift + 15 min|
-			//
-			LocalTime startShiftExTime = ltExTimeStart.minusMinutes(timeConsultation);
-			LocalTime endShiftExTime = ltExTimeEnd.plusMinutes(timeConsultation);
-			System.out.println("SHIFT EX TIME START: " + startShiftExTime);
-			System.out.println("SHIFT EX TIME END:   " + endShiftExTime);
-
-			if ((startShiftExTime.compareTo(localStartAndroid) == - 1 && ltExTimeEnd.compareTo(localStartAndroid) == 1) && (endShiftExTime.compareTo(localEndAndroid) == 1)) {
-				return false;
-			}
-
-			if (startShiftExTime.compareTo(localStartAndroid) == 0 && ltExTimeEnd.compareTo(endShiftExTime) == 1) {
-				return false;
-			}
-
-			if (localStartAndroid.compareTo(ltExTimeStart) == 0 && localEndAndroid.compareTo(ltExTimeEnd) == 0) {
-				return false;
-			}
-		}
-
-
-		// CASE #1 equals
-		if (localStartAndroid.compareTo(localStartDateDB) == 0 && localEndAndroid.compareTo(localEndDateDB) == 0) {
-			return true;
-		}
-
-		// CASE #2 inside
-		if ((localStartAndroid.compareTo(localStartDateDB) == 1 && localStartAndroid.compareTo(localEndDateDB) == -1) && (localEndAndroid.compareTo(localStartDateDB) == 1 && localEndAndroid.compareTo(localEndDateDB) == -1)) {
-			return true;
-		}
-
-		// CASE #3 inside
-		if ((localStartDateDB.compareTo(localStartAndroid) == 1 && localStartDateDB.compareTo(localEndAndroid) == -1) && (localEndDateDB.compareTo(localStartAndroid) == 1) && localEndDateDB.compareTo(localEndAndroid) == -1) {
-			return true;
-		}
-
-		if (localStartAndroid.compareTo(localStartDateDB) == 1 && localStartAndroid.compareTo(localEndDateDB) == -1) {
-			return true;
-		}
-
-		if (localStartAndroid.compareTo(localStartDateDB) == 0) {
-			return true;
-		}
-
-		if (localEndAndroid.compareTo(localStartDateDB) == 1 && localEndAndroid.compareTo(localEndDateDB) == -1) {
-			return true;
-		}
-
-		return false;
 	}
 
 
@@ -448,9 +282,9 @@ public class GetNearestDoctorsFilterTimeTest {
 			// NOT NORMAL CASE
 
 			// start and end the time of doctor's schedule
-			LocalTime docTimeStartDB = convertLongToLong(startDateDB);   // start from DB
+			LocalTime docTimeStartDB = convertLongToLong(startDateDB); 	// start from DB
 			localStartDateDB = docTimeStartDB.plusHours(12);
-			LocalTime docTimeEndDb = convertLongToLong(endDateDB);   // end from DB
+			LocalTime docTimeEndDb = convertLongToLong(endDateDB);	// end from DB
 			localEndDateDB = docTimeEndDb.plusHours(12);
 
 			// start and ens the time of search
@@ -486,6 +320,12 @@ public class GetNearestDoctorsFilterTimeTest {
 		System.out.println("  << intreval_End: " + endAndroid + " time: " + new SimpleDateFormat("HH:mm").format(endAndroid));
 
 		System.out.println();
+
+//		LocalTime localStartDateDB = convertLongToLong(startDateDB);
+//		LocalTime localEndDateDB = convertLongToLong(endDateDB);
+
+//		LocalTime localStartAndroid = convertLongToLong(startAndroid);
+//		LocalTime localEndAndroid = convertLongToLong(endAndroid);
 
 		// check interval: 15 or 30 minute from the star date
 		LocalTime timeShift = localStartAndroid.plusMinutes(15);
