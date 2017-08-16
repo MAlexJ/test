@@ -6,6 +6,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controller.test.user.SignUpDoctorTest;
 import model.User;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
@@ -13,6 +14,7 @@ import java.util.Random;
 
 import static constants.Constant.*;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNull;
 
 public class CheckEmailAPI_TEST {
 
@@ -60,6 +62,11 @@ public class CheckEmailAPI_TEST {
 		JSONObject response = checkEmailAPI(user.getEmail(), "EMAIL");
 
 		// #3 asserts
+		try {
+			assertNull(response.getJSONObject("user"));
+		} catch (JSONException ex) {
+			// ignore
+		}
 		assertEquals("You already have the " + loginModeDOCTOR + " account.", response.getString("message"));
 		assertEquals(true, response.getBoolean("status"));
 		assertEquals(200, response.getInt("statusCode"));
@@ -80,6 +87,87 @@ public class CheckEmailAPI_TEST {
 
 		// #2 GPLUS
 		testFirstLoginGplusAndFacebook("GPLUS");
+
+	}
+
+	/**
+	 * The user already has an account with one social network
+	 * and he tries to register an account with another social network.
+	 */
+	@Test
+	public void testIncorrectLoginTypeSocialNetwork() {
+
+		// #1 the user has login type: FACEBOOK and he wants to register GPLUS
+		testSeveralSocialNetworks("FACEBOOK", "GPLUS");
+
+
+		// #2 the user has login type: GPLUS and he wants to register FACEBOOK
+		testSeveralSocialNetworks("GPLUS", "FACEBOOK");
+
+	}
+
+	@Test
+	public void testIncorrectLoginTypeMoreThanTwo() {
+
+		// #1 the user has login type: FACEBOOK + EMAIL and he wants to register GPLUS
+		testSeveralSocialNetworksWithEmail("EMAIL", "FACEBOOK", "GPLUS");
+
+		// #2 the user has login type: GPLUS + EMAIL and he wants to register FACEBOOK
+		testSeveralSocialNetworksWithEmail("EMAIL", "GPLUS", "FACEBOOK");
+
+	}
+
+
+	private void testSeveralSocialNetworksWithEmail(String firstLType, String secondLType, String loginTypeForReReg) {
+		// #1 sign up user
+		String emailDOCTOR = "ddest_tt" + new Random().nextInt(24000300) + "@g.com";
+		Double latitudeDOCTOR = LATITUDE + new Random().nextInt(10);
+		Double longitudeDOCTOR = LONGITUDE + new Random().nextInt(20);
+		String passwordDOCTOR = "12345678";
+
+		SignUpDoctorTest.singUn_To_App_Doctor(emailDOCTOR, passwordDOCTOR, firstLType, latitudeDOCTOR.toString(), longitudeDOCTOR.toString());
+		SignUpDoctorTest.singUn_To_App_Doctor(emailDOCTOR, passwordDOCTOR, secondLType, latitudeDOCTOR.toString(), longitudeDOCTOR.toString());
+
+		// #2 check email
+		JSONObject response = checkEmailAPI(emailDOCTOR, loginTypeForReReg);
+
+		// #3 asserts
+		assertEquals("To register an account, you can only use one of the social networks Facebook or G+. You already have the " + secondLType + " account.", response.getString("message"));
+		assertEquals(false, response.getBoolean("status"));
+		assertEquals(501, response.getInt("statusCode"));
+
+		try {
+			assertNull(response.getJSONObject("user"));
+		} catch (JSONException ex) {
+			// ignore
+		}
+
+	}
+
+
+	private void testSeveralSocialNetworks(String loginTypeForReg, String loginTypeForReReg) {
+
+		// #1 sign up user
+		String emailDOCTOR = "ddest_tt" + new Random().nextInt(24000300) + "@g.com";
+		Double latitudeDOCTOR = LATITUDE + new Random().nextInt(10);
+		Double longitudeDOCTOR = LONGITUDE + new Random().nextInt(20);
+		String passwordDOCTOR = "12345678";
+
+		User user = SignUpDoctorTest.singUn_To_App_Doctor(emailDOCTOR, passwordDOCTOR, loginTypeForReg, latitudeDOCTOR.toString(), longitudeDOCTOR.toString());
+
+		// #2 check email
+		JSONObject response = checkEmailAPI(user.getEmail(), loginTypeForReReg);
+
+		// #3 asserts
+		assertEquals("To register an account, you can only use one of the social networks Facebook or G+. You already have the " + loginTypeForReg + " account.", response.getString("message"));
+		assertEquals(false, response.getBoolean("status"));
+		assertEquals(501, response.getInt("statusCode"));
+
+		try {
+			assertNull(response.getJSONObject("user"));
+		} catch (JSONException ex) {
+			// ignore
+		}
 
 	}
 
@@ -105,6 +193,7 @@ public class CheckEmailAPI_TEST {
 
 
 	private void testSecondLoginWithOneOfSocialNetwork(String loginForRe, String typeSocialNetwork) {
+
 		// #1 sign up user
 		String emailDOCTOR = "ddest_tt" + new Random().nextInt(24000300) + "@g.com";
 		Double latitudeDOCTOR = LATITUDE + new Random().nextInt(10);
@@ -157,6 +246,12 @@ public class CheckEmailAPI_TEST {
 		assertEquals("Email not found in database.", response.getString("message"));
 		assertEquals(false, response.getBoolean("status"));
 		assertEquals(200, response.getInt("statusCode"));
+
+		try {
+			assertNull(response.getJSONObject("user"));
+		} catch (JSONException ex) {
+			// ignore
+		}
 
 	}
 
