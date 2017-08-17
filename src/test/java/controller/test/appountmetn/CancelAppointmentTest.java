@@ -47,7 +47,7 @@ public class CancelAppointmentTest {
       User doctor = SignUpDoctorTest.singUn_To_App_Doctor(emailDOCTOR, passwordDOCTOR, loginModeDOCTOR, latitudeDOCTOR.toString(), longitudeDOCTOR.toString());
 
       // #3 Store appointment
-      StoreAppointmentTest.storeAppointmentHireDoctor(patient, doctor);
+      OLD_StoreAppointmentTest.storeAppointmentHireDoctor(patient, doctor);
 
       // #4 get appointment
       JSONObject jsonObject = GetAppointmentOfPatientsTest.getAppointmentOfPatients(doctor);

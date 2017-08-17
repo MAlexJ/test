@@ -45,7 +45,7 @@ public class GetAppointmentOfPatientsTest {
       User doctor = SignUpDoctorTest.singUn_To_App_Doctor(emailDOCTOR, passwordDOCTOR, loginModeDOCTOR, latitudeDOCTOR.toString(), longitudeDOCTOR.toString());
 
       // #3 Store appointment
-      AppointmentVO expectAppointment = StoreAppointmentTest.storeAppointmentHireDoctor(patient, doctor);
+      AppointmentVO expectAppointment = OLD_StoreAppointmentTest.storeAppointmentHireDoctor(patient, doctor);
 
       // #4 get appointment
 

@@ -6,9 +6,9 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controller.test.user.SignUpDoctorTest;
 import controller.test.user.SignUpPatientTest;
-import model.AppointmentVO;
 import model.User;
 import org.json.JSONObject;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Random;
@@ -19,19 +19,15 @@ import static junit.framework.TestCase.assertEquals;
 /**
  * @author malex
  */
-public class StoreAppointmentTest {
+@Ignore
+public class OLD_StoreAppointmentErrorTest {
 
    @Test
-   public void storeAppointmentTest() {
-
+   public void error_patient_email() {
       // #1 Create PATIENT
-      String emailPATIENT = "patient_p" + new Random().nextInt(243656300) + "@gmail.com";
-      Double latitudePATIENT = LATITUDE + new Random().nextInt(10);
-      Double longitudePATIENT = LONGITUDE + new Random().nextInt(20);
-      String passwordPATIENT = "12345678";
-      String loginModePATIENT = "EMAIL";
-
-      User patient = SignUpPatientTest.singUn_To_App_Patient(emailPATIENT, passwordPATIENT, loginModePATIENT, latitudePATIENT.toString(), longitudePATIENT.toString());
+      String emailPATIENT = "xxx@xxx.xxx";
+      User patient = new User();
+      patient.setEmail(emailPATIENT);
 
       // #2 Create DOCTOR
       String emailDOCTOR = "doctor_d" + new Random().nextInt(243656300) + "@gmail.com";
@@ -43,29 +39,58 @@ public class StoreAppointmentTest {
       User doctor = SignUpDoctorTest.singUn_To_App_Doctor(emailDOCTOR, passwordDOCTOR, loginModeDOCTOR, latitudeDOCTOR.toString(), longitudeDOCTOR.toString());
 
       // test
-      long start = System.currentTimeMillis();
+      JSONObject jsonObject = storeAppointment(patient, doctor);
 
-      storeAppointmentHireDoctor(patient, doctor);
+      String message = (String) jsonObject.get("message");
+      Integer statusCode = (Integer) jsonObject.get("statusCode");
+      Boolean status = (Boolean) jsonObject.get("status");
 
-      long end = System.currentTimeMillis();
+      assertEquals("Error User Authentication", message);
+      assertEquals(new Integer(200), statusCode);
+      assertEquals(Boolean.FALSE, status);
+   }
 
-      System.out.println("Time store appointment : " + ((double) (end - start) / 1000));
+   @Test
+   public void error_doctor_email() {
+
+      // #1 Create PATIENT
+      String emailPATIENT = "patient_p" + new Random().nextInt(243656300) + "@gmail.com";
+      Double latitudePATIENT = LATITUDE + new Random().nextInt(10);
+      Double longitudePATIENT = LONGITUDE + new Random().nextInt(20);
+      String passwordPATIENT = "12345678";
+      String loginModePATIENT = "EMAIL";
+
+      User patient = SignUpPatientTest.singUn_To_App_Patient(emailPATIENT, passwordPATIENT, loginModePATIENT, latitudePATIENT.toString(), longitudePATIENT.toString());
+
+
+      // #2 Create DOCTOR
+      String emailDOCTOR = "doctor_d" + new Random().nextInt(243656300) + "@gmail.com";
+
+      User doctor = new User();
+      doctor.setEmail(emailDOCTOR);
+
+      // test
+      JSONObject jsonObject = storeAppointment(patient, doctor);
+
+      String message = (String) jsonObject.get("message");
+      Integer statusCode = (Integer) jsonObject.get("statusCode");
+      Boolean status = (Boolean) jsonObject.get("status");
+
+      assertEquals("User with email: "+emailDOCTOR+" not found", message);
+      assertEquals(new Integer(200), statusCode);
+      assertEquals(Boolean.FALSE, status);
 
    }
 
-   public static AppointmentVO storeAppointmentHireDoctor(User patient, User doctor) {
-
-      AppointmentVO appointmentVO = new AppointmentVO();
-      appointmentVO.setPatientEmail(patient.getEmail());
-      appointmentVO.setAppointmentMode("videoCall");
-      appointmentVO.setAppointmentDate(1453095300000L);
+   private JSONObject storeAppointment(User patient, User doctor) {
 
       String request = "{\n" +
               "\"email\": \"" + patient.getEmail() + "\",\n" +
               "\"sessionToken\": \"" + patient.getSessionToken() + "\",\n" +
               "\n" +
-              "\"bookingDate\": \"" + appointmentVO.getAppointmentDate() + "\",\n" +
-              "\"bookingMode\": \"" + appointmentVO.getAppointmentMode() + "\",\n" +
+              "\"bookingDate\": \"1453095300000\",\n" +
+              "\"bookingTime\": \"1453095300000\",\n" +
+              "\"bookingMode\": \"videoCall\",\n" +
               "\n" +
               "\"doctorInfo\": {\n" +
               "\t\"hiredDoc\": \"" + doctor.getEmail() + "\",\n" +
@@ -75,7 +100,7 @@ public class StoreAppointmentTest {
               "},\n" +
               "\n" +
               "\"symptoms\": [{\n" +
-              "\t\"symptomName\": \"Symptom 2\",\n" +
+              "\t\"symptomName\": \"headache 1\",\n" +
               "\t\"symptomDescription\": \n" +
               "\t\t\t[\n" +
               "\t\t\t\t{\n" +
@@ -103,17 +128,29 @@ public class StoreAppointmentTest {
               "\t}, \n" +
               "\n" +
               "\t{\n" +
-              "\t\"symptomName\": \"headache new symptom\",\n" +
+              "\t\"symptomName\": \"headache 2\",\n" +
               "\t\"symptomDescription\": \n" +
               "\t\t[\n" +
               "\t\t\t{\n" +
-              "\t\t\t\t\"symptomDescriptionName\": \"When did it happen\"" +
+              "\t\t\t\t\"symptomDescriptionName\": \"site 2\",\n" +
+              "\t\t\t\t\"symptomDescriptionData\": \n" +
+              "\t\t\t\t\t{\n" +
+              "\t\t\t\t\t\t\"symptomsValue\": \"fullSided 2\"\n" +
+              "\t\t\t\t\t}\n" +
               "\t\t\t}, \n" +
               "\t\t\t{\n" +
-              "\t\t\t\t\"symptomDescriptionName\": \"How did it happen\""+
+              "\t\t\t\t\"symptomDescriptionName\": \"onset 2\",\n" +
+              "\t\t\t\t\"symptomDescriptionData\": \n" +
+              "\t\t\t\t\t{ \n" +
+              "\t\t\t\t\t\t\"symptomsValue\": \"sudden 2\"\n" +
+              "\t\t\t\t\t}\n" +
               "\t\t\t}, \n" +
               "\t\t\t{\n" +
-              "\t\t\t\t\"symptomDescriptionName\": \"what have u done about it\"" +
+              "\t\t\t\t\"symptomDescriptionName\": \"character 2\",\n" +
+              "\t\t\t\t\"symptomDescriptionData\": \n" +
+              "\t\t\t\t\t{\n" +
+              "\t\t\t\t\t\t\"symptomsValue\": \"throbbing 2\"\n" +
+              "\t\t\t\t\t}\n" +
               "\t\t\t}\n" +
               "\t\t]\n" +
               "\t}\n" +
@@ -133,27 +170,7 @@ public class StoreAppointmentTest {
          throw new RuntimeException("error sing up doctor");
       }
 
-      // get values
-      JSONObject jsonObject = actualResponse.getBody().getObject();
-
-      // check response
-      assertRespose(jsonObject);
-
-      return appointmentVO;
-
+      return actualResponse.getBody().getObject();
    }
-
-   //Assert
-   private static void assertRespose(JSONObject jsonObject) {
-
-      String message = (String) jsonObject.get("message");
-      Integer statusCode = (Integer) jsonObject.get("statusCode");
-      Boolean status = (Boolean) jsonObject.get("status");
-
-      assertEquals("Doctor booked successfully!", message);
-      assertEquals(new Integer(200), statusCode);
-      assertEquals(Boolean.TRUE, status);
-   }
-
 
 }

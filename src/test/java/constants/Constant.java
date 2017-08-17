@@ -30,6 +30,7 @@ public class Constant {
 	public final static String URL_GET_APPOINTMENT_OF_PATIENTS = URL_BASE + "/appointment/getAppointmentOfPatients";
 	public final static String URL_CANCEL_APPOINTMENT = URL_BASE + "/appointment/cancelAppointment";
 	public final static String URL_APPROVE_APPOINTMENT = URL_BASE + "/appointment/approveAppointment";
+	public final static String URL_STORE_APPOINTMENT = URL_BASE + "/appointment/hireDoctor/storeAppointment";
 
 	// schedule
 	public final static String URL_STORE_SCHEDULE = URL_BASE + "/schedule/storeSchedule";
