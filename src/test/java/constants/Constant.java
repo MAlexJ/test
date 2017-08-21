@@ -49,4 +49,9 @@ public class Constant {
 	// CHECK EMAIL API
 	public final static String CHECK_EMAIL = URL_BASE + "/user/checkEmail";
 
+	// MAGIC API
+	public final static String CHECK_UPDATES_API = URL_BASE + "/api/checkUpdates";
+	public final static String RESET_API_API = URL_BASE + "/api/resetAPI";
+	public final static String SET_STATUS_API = URL_BASE + "/api/setStatusAPI";
+
 }
