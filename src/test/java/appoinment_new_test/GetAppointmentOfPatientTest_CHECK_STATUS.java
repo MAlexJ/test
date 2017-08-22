@@ -18,7 +18,16 @@ import static constants.Constant.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class GetAppointmentOfPatientTest {
+/**
+ * "empty" - mean user did not provide any symptoms detail.
+ * <p>
+ * "Partial" - mean user only select the symptoms but
+ * does not provide the symptoms detail like
+ * question answers and descriptions.
+ * <p>
+ * "Complete" -  mean it gives all the details with symptoms
+ */
+public class GetAppointmentOfPatientTest_CHECK_STATUS {
 
 	@Test
 	public void testGetAppointmentOfPatients_EMPTY_1() {
