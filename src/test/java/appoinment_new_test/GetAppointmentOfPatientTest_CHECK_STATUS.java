@@ -161,6 +161,20 @@ public class GetAppointmentOfPatientTest_CHECK_STATUS {
 
 	}
 
+	// The parameter: symptomQuestionId should be in the question.
+	@Test
+	public void storeAppointment_ERROR_when_not_send_symptomQuestionId_with_questions() {
+
+		// #1 create users
+		User doctor = createDoctor();
+		User patient = createPatient();
+
+		// #2 store appointment
+		JSONObject jsonObject = storeAppointment_COMPLETE_ERROR(patient, doctor);
+
+		assertEquals("The parameter: symptomQuestionId should be in the question.", jsonObject.get("message"));
+	}
+
 
 	private JSONObject storeAppointment_PARTIAL_2(User patient, User doctor) {
 
@@ -182,8 +196,8 @@ public class GetAppointmentOfPatientTest_CHECK_STATUS {
 				  "\t{ \n" +
 				  "\t\t\"symptomName\": \"headache 1\",\n" +
 				  "\t\t\"questions\": [\n" +
-				  "\t\t\t{\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
-				  "\t\t    {\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
+				  "\t\t    {\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
 				  "\t\t]\n" +
 				  "\t}\n" +
 				  "   ]\n" +
@@ -342,6 +356,95 @@ public class GetAppointmentOfPatientTest_CHECK_STATUS {
 	}
 
 	private JSONObject storeAppointment_COMPLETE(User patient, User doctor) {
+		String request = "{\n" +
+				  "\"email\": \"" + patient.getEmail() + "\",\n" +
+				  "\"sessionToken\": \"" + patient.getSessionToken() + "\",\n" +
+				  "\n" +
+				  "\"bookingTime\": \"1453095300000\",\n" +
+				  "\"bookingMode\": \"videoCall\",\n" +
+				  "\n" +
+				  "\"doctorInfo\": {\n" +
+				  "  \"hiredDoc\": \"" + doctor.getEmail() + "\",\n" +
+				  "    \"doctorLatitude\": \"23.34000\",\n" +
+				  "    \"doctorLongitude\": \"34.47666\",\n" +
+				  "  \"doctorRate\": \"$100\"\n" +
+				  "},\n" +
+				  "\n" +
+				  "\"symptoms\": [\n" +
+				  "\t{ \n" +
+				  "\t\t\"symptomName\": \"headache 1\",\n" +
+				  "\t\t\"questions\": [\n" +
+				  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
+				  "\t\t    {\"symptomQuestionId\":\"2\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t],\n" +
+				  "\t\t\"symptomDescription\": [\n" +
+				  "    \t\t{\n" +
+				  "        \t\t\"symptomDescriptionName\": \"site\",\n" +
+				  "    \t\t\t\"symptomDescriptionOther\":\"TEXT TXT TEXT......\"\n" +
+				  "        \t}, \n" +
+				  "        \t{\n" +
+				  "        \t\t\"symptomDescriptionName\": \"onset\",\n" +
+				  "        \t\t\"symptomDescriptionData\": \n" +
+				  "            \t\t{\n" +
+				  "            \t\t\t\"symptomsValue\": \"sudden\"\n" +
+				  "            \t\t}\n" +
+				  "        \t}, \n" +
+				  "        \t{\n" +
+				  "        \t\t\"symptomDescriptionName\": \"character\",\n" +
+				  "        \t\t\"symptomDescriptionData\": \n" +
+				  "            \t\t{\n" +
+				  "            \t\t\t \"symptomsValue\": \"throbbing\"\n" +
+				  "        \t\t\t }\n" +
+				  "    \t\t }\n" +
+				  "      ]\n" +
+				  "\t}, \n" +
+				  "\t{\n" +
+				  "\t\t\"symptomName\": \"headache 2\",\n" +
+				  "\t\t\"symptomDescription\": [\n" +
+				  "    \t\t{\n" +
+				  "        \t\t\"symptomDescriptionName\": \"site 2\",\n" +
+				  "        \t\t\"symptomDescriptionData\": \n" +
+				  "        \t\t\t{\n" +
+				  "            \t\t\t\"symptomsValue\": \"fullSided 2\"\n" +
+				  "        \t\t\t}\n" +
+				  "    \t\t}, \n" +
+				  "    \t\t{\n" +
+				  "    \t\t\t \"symptomDescriptionName\": \"onset 2\",\n" +
+				  "    \t\t\t \"symptomDescriptionData\": \n" +
+				  "        \t\t\t { \n" +
+				  "        \t\t\t\t \"symptomsValue\": \"sudden 2\"\n" +
+				  "        \t\t\t }\n" +
+				  "    \t\t}, \n" +
+				  "    \t\t{\n" +
+				  "    \t\t\t \"symptomDescriptionName\": \"character 2\",\n" +
+				  "    \t\t\t  \"symptomDescriptionData\": \n" +
+				  "    \t\t\t   {\n" +
+				  "        \t\t\t  \"symptomsValue\": \"throbbing 2\"\n" +
+				  "        \t\t\t }\n" +
+				  "    \t\t }\n" +
+				  "        ]\n" +
+				  "      }\n" +
+				  "   ]\n" +
+				  "}\n";
+
+		// #2 POST RESPONSE
+		HttpResponse<JsonNode> actualResponse;
+		try {
+			actualResponse = Unirest.post(URL_STORE_APPOINTMENT)
+					  .header("content-type", "application/json")
+					  .header("cache-control", "no-cache")
+					  .body(request).asJson();
+		} catch (UnirestException e) {
+			throw new RuntimeException("Error checkEmail API");
+		}
+
+		// #3 result
+		return actualResponse.getBody().getObject();
+
+	}
+
+
+	private JSONObject storeAppointment_COMPLETE_ERROR(User patient, User doctor) {
 
 		String request = "{\n" +
 				  "\"email\": \"" + patient.getEmail() + "\",\n" +

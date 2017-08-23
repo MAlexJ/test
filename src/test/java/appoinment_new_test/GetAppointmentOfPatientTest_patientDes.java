@@ -19,9 +19,12 @@ import static org.junit.Assert.assertEquals;
 
 public class GetAppointmentOfPatientTest_patientDes {
 
-	@Test
-	public void test_EMPTY(){
 
+	/**
+	 * WITHOUT SYMPTOMS
+	 */
+	@Test
+	public void test_EMPTY_WITHOUT_SYMPTOMS() {
 		// #1 create users
 		User doctor = createDoctor();
 		User patient = createPatient();
@@ -30,7 +33,7 @@ public class GetAppointmentOfPatientTest_patientDes {
 		String symptom2 = "Pain";
 
 		// #2 create a new appointment
-		storeAppointment_EMPTY(patient, doctor,symptom1, symptom2);
+		storeAppointment_EMPTY(patient, doctor, symptom1, symptom2);
 
 		// #3 getAppointmentOfPatients
 		JSONObject appointmentOfPatients = getAppointmentOfPatients(doctor);
@@ -44,12 +47,366 @@ public class GetAppointmentOfPatientTest_patientDes {
 
 		assertEquals(patient.getEmail(), appointment.getString("patientEmail"));
 
-		assertEquals("", appointment.getString("patientDes"));
+		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition.\n" +
+				  "\n" +
+				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+
 	}
 
 
+	/**
+	 * EMPTY WITH SYMPTOMS
+	 */
+	@Test
+	public void test_EMPTY_WITH_SYMPTOMS() {
 
+		// #1 create users
+		User doctor = createDoctor();
+		User patient = createPatient();
+
+		String symptom1 = "Headache";
+		String symptom2 = "Pain";
+
+		// #2 create a new appointment
+		storeAppointment_EMPTY_with_SYMPTOMS(patient, doctor, symptom1, symptom2);
+
+		// #3 getAppointmentOfPatients
+		JSONObject appointmentOfPatients = getAppointmentOfPatients(doctor);
+		assertEquals(doctor.getEmail(), appointmentOfPatients.get("email"));
+
+		JSONArray appointments = appointmentOfPatients.getJSONArray("appointments");
+		JSONObject appointment = appointments.getJSONObject(0);
+
+		assertEquals("EMPTY", appointment.getString("appointmentHistory"));
+		assertEquals("PENDING", appointment.getString("appointmentStatus"));
+
+		assertEquals(patient.getEmail(), appointment.getString("patientEmail"));
+
+		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition who presents with Headache and Pain.\n" +
+				  "\n" +
+				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+	}
+
+
+	/**
+	 * WITHOUT SYMPTOMS
+	 */
+	@Test
+	public void test_PARTIAL_ONLY_SYMPTOM_VALUE() {
+		// #1 create users
+		User doctor = createDoctor();
+		User patient = createPatient();
+
+		String symptom1 = "Headache";
+		String symptom2 = "Pain";
+
+		// #2 create a new appointment
+		storeAppointment_PARTIAL_ONLY_SYMPTOM_VALUE(patient, doctor, symptom1, symptom2);
+
+		// #3 getAppointmentOfPatients
+		JSONObject appointmentOfPatients = getAppointmentOfPatients(doctor);
+		assertEquals(doctor.getEmail(), appointmentOfPatients.get("email"));
+
+		JSONArray appointments = appointmentOfPatients.getJSONArray("appointments");
+		JSONObject appointment = appointments.getJSONObject(0);
+
+		assertEquals("PARTIAL", appointment.getString("appointmentHistory"));
+		assertEquals("PENDING", appointment.getString("appointmentStatus"));
+
+		assertEquals(patient.getEmail(), appointment.getString("patientEmail"));
+
+		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition who presents with Headache 1 and Headache 2.\n" +
+				  "\n" +
+				  "The Headache 1 is onset, character\n" +
+				  "The Headache 2 is site 2, onset 2, character 4\n" +
+				  "\n" +
+				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+
+	}
+
+
+	/**
+	 * WITH QUESTIONS
+	 */
+	@Test
+	public void test_PARTIAL_QUESTIONS() {
+		// #1 create users
+		User doctor = createDoctor();
+		User patient = createPatient();
+
+		// #2 create a new appointment
+		storeAppointment_PARTIAL_WITH_QUESTIONS(patient, doctor);
+
+		// #3 getAppointmentOfPatients
+		JSONObject appointmentOfPatients = getAppointmentOfPatients(doctor);
+		assertEquals(doctor.getEmail(), appointmentOfPatients.get("email"));
+
+		JSONArray appointments = appointmentOfPatients.getJSONArray("appointments");
+		JSONObject appointment = appointments.getJSONObject(0);
+
+		assertEquals("PARTIAL", appointment.getString("appointmentHistory"));
+		assertEquals("PENDING", appointment.getString("appointmentStatus"));
+
+		assertEquals(patient.getEmail(), appointment.getString("patientEmail"));
+
+		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition who presents with Headache 1 of 1 days duration and Headache 2 of 3 days duration.\n" +
+				  "\n" +
+				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+	}
+
+
+	/**
+	 * WITH ONE QUESTION
+	 */
+	@Test
+	public void test_PARTIAL_ONE_QUESTION() {
+		// #1 create users
+		User doctor = createDoctor();
+		User patient = createPatient();
+
+		// #2 create a new appointment
+		storeAppointment_PARTIAL_ONE_QUESTION(patient, doctor);
+
+		// #3 getAppointmentOfPatients
+		JSONObject appointmentOfPatients = getAppointmentOfPatients(doctor);
+		assertEquals(doctor.getEmail(), appointmentOfPatients.get("email"));
+
+		JSONArray appointments = appointmentOfPatients.getJSONArray("appointments");
+		JSONObject appointment = appointments.getJSONObject(0);
+
+		assertEquals("PARTIAL", appointment.getString("appointmentHistory"));
+		assertEquals("PENDING", appointment.getString("appointmentStatus"));
+
+		assertEquals(patient.getEmail(), appointment.getString("patientEmail"));
+
+		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition who presents with Headache 1 of 1 days duration.\n" +
+				  "\n" +
+				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+	}
+
+
+	/**
+	 * PARTIAL WITH ONE QUESTION
+	 */
+	private JSONObject storeAppointment_PARTIAL_ONE_QUESTION(User patient, User doctor) {
+		String request = "{\n" +
+				  "\"email\": \"" + patient.getEmail() + "\",\n" +
+				  "\"sessionToken\": \"" + patient.getSessionToken() + "\",\n" +
+				  "\n" +
+				  "\"bookingTime\": \"" + new Date().getTime() + "\",\n" +
+				  "\"bookingMode\": \"videoCall\",\n" +
+				  "\n" +
+				  "\"doctorInfo\": {\n" +
+				  "  \"hiredDoc\": \"" + doctor.getEmail() + "\",\n" +
+				  "    \"doctorLatitude\": \"23.34000\",\n" +
+				  "    \"doctorLongitude\": \"34.47666\",\n" +
+				  "  \"doctorRate\": \"$100\"\n" +
+				  "},\n" +
+				  "\n" +
+				  "\"symptoms\": [\n" +
+				  "\t{ \n" +
+				  "\t\t\"symptomName\": \"Headache 1\",\n" +
+				  "\t\t\"questions\": [\n" +
+				  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"1 days\"},\n" +
+				  "\t\t    {\"symptomQuestionId\":\"2\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t]\n" +
+				  "\t}" +
+				  "   ]" +
+				  "}";
+
+		// #2 POST RESPONSE
+		HttpResponse<JsonNode> actualResponse;
+		try {
+			actualResponse = Unirest.post(URL_STORE_APPOINTMENT)
+					  .header("content-type", "application/json")
+					  .header("cache-control", "no-cache")
+					  .body(request).asJson();
+		} catch (UnirestException e) {
+			throw new RuntimeException("Error checkEmail API");
+		}
+
+		// #3 result
+		return actualResponse.getBody().getObject();
+	}
+
+
+	/**
+	 * PARTIAL WITH QUESTIONS
+	 */
+	private JSONObject storeAppointment_PARTIAL_WITH_QUESTIONS(User patient, User doctor) {
+		String request = "{\n" +
+				  "\"email\": \"" + patient.getEmail() + "\",\n" +
+				  "\"sessionToken\": \"" + patient.getSessionToken() + "\",\n" +
+				  "\n" +
+				  "\"bookingTime\": \"" + new Date().getTime() + "\",\n" +
+				  "\"bookingMode\": \"videoCall\",\n" +
+				  "\n" +
+				  "\"doctorInfo\": {\n" +
+				  "  \"hiredDoc\": \"" + doctor.getEmail() + "\",\n" +
+				  "    \"doctorLatitude\": \"23.34000\",\n" +
+				  "    \"doctorLongitude\": \"34.47666\",\n" +
+				  "  \"doctorRate\": \"$100\"\n" +
+				  "},\n" +
+				  "\n" +
+				  "\"symptoms\": [\n" +
+				  "\t{ \n" +
+				  "\t\t\"symptomName\": \"Headache 1\",\n" +
+				  "\t\t\"questions\": [\n" +
+				  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"1 days\"},\n" +
+				  "\t\t    {\"symptomQuestionId\":\"2\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t]\n" +
+				  "\t}, \n" +
+				  "\t{ \n" +
+				  "\t\t\"symptomName\": \"Headache 2\",\n" +
+				  "\t\t\"questions\": [\n" +
+				  "\t\t\t{\"symptomQuestionId\":\"3\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"3 days\"},\n" +
+				  "\t\t    {\"symptomQuestionId\":\"4\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t]\n" +
+				  "\t}\n" +
+				  "   ]" +
+				  "}";
+
+		// #2 POST RESPONSE
+		HttpResponse<JsonNode> actualResponse;
+		try {
+			actualResponse = Unirest.post(URL_STORE_APPOINTMENT)
+					  .header("content-type", "application/json")
+					  .header("cache-control", "no-cache")
+					  .body(request).asJson();
+		} catch (UnirestException e) {
+			throw new RuntimeException("Error checkEmail API");
+		}
+
+		// #3 result
+		return actualResponse.getBody().getObject();
+	}
+
+
+	/**
+	 * EMPTY WITHOUT SYMPTOMS
+	 */
+	private JSONObject storeAppointment_PARTIAL_ONLY_SYMPTOM_VALUE(User patient, User doctor, String symptom1, String symptom2) {
+		String request = "{\n" +
+				  "\"email\": \"" + patient.getEmail() + "\",\n" +
+				  "\"sessionToken\": \"" + patient.getSessionToken() + "\",\n" +
+				  "\n" +
+				  "\"bookingTime\": \"" + new Date().getTime() + "\",\n" +
+				  "\"bookingMode\": \"videoCall\",\n" +
+				  "\n" +
+				  "\"doctorInfo\": {\n" +
+				  "  \"hiredDoc\": \"" + doctor.getEmail() + "\",\n" +
+				  "    \"doctorLatitude\": \"23.34000\",\n" +
+				  "    \"doctorLongitude\": \"34.47666\",\n" +
+				  "  \"doctorRate\": \"$100\"\n" +
+				  "},\n" +
+				  "\n" +
+				  "\"symptoms\": [\n" +
+				  "\t{ \n" +
+				  "\t\t\"symptomName\": \"Headache 1\",\n" +
+				  "\t\t\"symptomDescription\": [\n" +
+				  "    \t\t{\n" +
+				  "        \t\t\"symptomDescriptionName\": \"onset\",\n" +
+				  "        \t\t\"symptomDescriptionData\": \n" +
+				  "            \t\t{\n" +
+				  "            \t\t\t\"symptomsValue\": \"sudden\"\n" +
+				  "            \t\t}\n" +
+				  "        \t}, \n" +
+				  "        \t{\n" +
+				  "        \t\t\"symptomDescriptionName\": \"character\",\n" +
+				  "        \t\t\"symptomDescriptionData\": \n" +
+				  "            \t\t{\n" +
+				  "            \t\t\t \"symptomsValue\": \"throbbing\"\n" +
+				  "        \t\t\t }\n" +
+				  "    \t\t }\n" +
+				  "      ]\n" +
+				  "\t}, \n" +
+				  "\t{\n" +
+				  "\t\t\"symptomName\": \"Headache 2\",\n" +
+				  "\t\t\"symptomDescription\": [\n" +
+				  "    \t\t{\n" +
+				  "        \t\t\"symptomDescriptionName\": \"site 2\",\n" +
+				  "        \t\t\"symptomDescriptionData\": \n" +
+				  "        \t\t\t{\n" +
+				  "            \t\t\t\"symptomsValue\": \"fullSided 2\"\n" +
+				  "        \t\t\t}\n" +
+				  "    \t\t}, \n" +
+				  "    \t\t{\n" +
+				  "    \t\t\t \"symptomDescriptionName\": \"onset 2\",\n" +
+				  "    \t\t\t \"symptomDescriptionData\": \n" +
+				  "        \t\t\t { \n" +
+				  "        \t\t\t\t \"symptomsValue\": \"sudden 2\"\n" +
+				  "        \t\t\t }\n" +
+				  "    \t\t}, \n" +
+				  "    \t\t{\n" +
+				  "    \t\t\t \"symptomDescriptionName\": \"character 4\",\n" +
+				  "    \t\t\t  \"symptomDescriptionData\": \n" +
+				  "    \t\t\t   {\n" +
+				  "        \t\t\t  \"symptomsValue\": \"throbbing 4\"\n" +
+				  "        \t\t\t }\n" +
+				  "    \t\t }\n" +
+				  "        ]\n" +
+				  "      }\n" +
+				  "   ]" +
+				  "}";
+
+		// #2 POST RESPONSE
+		HttpResponse<JsonNode> actualResponse;
+		try {
+			actualResponse = Unirest.post(URL_STORE_APPOINTMENT)
+					  .header("content-type", "application/json")
+					  .header("cache-control", "no-cache")
+					  .body(request).asJson();
+		} catch (UnirestException e) {
+			throw new RuntimeException("Error checkEmail API");
+		}
+
+		// #3 result
+		return actualResponse.getBody().getObject();
+
+	}
+
+	/**
+	 * EMPTY WITHOUT SYMPTOMS
+	 */
 	private JSONObject storeAppointment_EMPTY(User patient, User doctor, String symptom1, String symptom2) {
+		String request = "{\n" +
+				  "\"email\": \"" + patient.getEmail() + "\",\n" +
+				  "\"sessionToken\": \"" + patient.getSessionToken() + "\",\n" +
+				  "\n" +
+				  "\"bookingTime\": \"" + new Date().getTime() + "\",\n" +
+				  "\"bookingMode\": \"videoCall\",\n" +
+				  "\n" +
+				  "\"doctorInfo\": {\n" +
+				  "  \"hiredDoc\": \"" + doctor.getEmail() + "\",\n" +
+				  "    \"doctorLatitude\": \"23.34000\",\n" +
+				  "    \"doctorLongitude\": \"34.47666\",\n" +
+				  "  \"doctorRate\": \"$100\"\n" +
+				  "},\n" +
+				  "\n" +
+				  "\"symptoms\": []" +
+				  "}";
+
+		// #2 POST RESPONSE
+		HttpResponse<JsonNode> actualResponse;
+		try {
+			actualResponse = Unirest.post(URL_STORE_APPOINTMENT)
+					  .header("content-type", "application/json")
+					  .header("cache-control", "no-cache")
+					  .body(request).asJson();
+		} catch (UnirestException e) {
+			throw new RuntimeException("Error checkEmail API");
+		}
+
+		// #3 result
+		return actualResponse.getBody().getObject();
+
+	}
+
+
+	/**
+	 * EMPTY WITH SYMPTOMS
+	 */
+	private JSONObject storeAppointment_EMPTY_with_SYMPTOMS(User patient, User doctor, String symptom1, String symptom2) {
 
 		String request = "{\n" +
 				  "\"email\": \"" + patient.getEmail() + "\",\n" +
@@ -116,7 +473,6 @@ public class GetAppointmentOfPatientTest_patientDes {
 		return actualResponse.getBody().getObject();
 
 	}
-
 
 
 	/**
