@@ -16,6 +16,9 @@ import static constants.Constant.*;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNull;
 
+/**
+ * New TEST
+ */
 public class CheckEmailAPI_TEST {
 
 	/**

@@ -19,6 +19,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
+ * NEW TEST
+ * <p>
  * "empty" - mean user did not provide any symptoms detail.
  * <p>
  * "Partial" - mean user only select the symptoms but

@@ -17,6 +17,9 @@ import java.util.Random;
 import static constants.Constant.*;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * New TEST
+ */
 public class GetAppointmentOfPatientTest_patientDes {
 
 
