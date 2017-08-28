@@ -40,9 +40,6 @@ public class Constant {
 	// getNearest doctor
 	public final static String URL_GET_NEAREST_DOCTOR = URL_BASE + "/user/getNearestDoctors";
 
-	// URL_SEARCH_DOCTOR
-	public final static String URL_SEARCH_DOCTOR = URL_BASE + "/user/searchDoctors";
-
 	// FCM
 	public final static String FCM_REGISTER_DEVICE = URL_BASE + "/fcm/registerDevice";
 

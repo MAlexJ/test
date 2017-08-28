@@ -1,4 +1,4 @@
-package appoinment_new_test;
+package appoinment_API;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -311,14 +311,14 @@ public class GetAppointmentOfPatientTest_patientDes {
 				  "        \t\t\"symptomDescriptionName\": \"onset\",\n" +
 				  "        \t\t\"symptomDescriptionData\": \n" +
 				  "            \t\t{\n" +
-				  "            \t\t\t\"symptomsValue\": \"sudden\"\n" +
+				  "            \t\t\t\"symptomsValue\": \"onset_val_1\"\n" +
 				  "            \t\t}\n" +
 				  "        \t}, \n" +
 				  "        \t{\n" +
 				  "        \t\t\"symptomDescriptionName\": \"character\",\n" +
 				  "        \t\t\"symptomDescriptionData\": \n" +
 				  "            \t\t{\n" +
-				  "            \t\t\t \"symptomsValue\": \"throbbing\"\n" +
+				  "            \t\t\t \"symptomsValue\": \"character_val_1\"\n" +
 				  "        \t\t\t }\n" +
 				  "    \t\t }\n" +
 				  "      ]\n" +
@@ -330,21 +330,21 @@ public class GetAppointmentOfPatientTest_patientDes {
 				  "        \t\t\"symptomDescriptionName\": \"site 2\",\n" +
 				  "        \t\t\"symptomDescriptionData\": \n" +
 				  "        \t\t\t{\n" +
-				  "            \t\t\t\"symptomsValue\": \"fullSided 2\"\n" +
+				  "            \t\t\t\"symptomsValue\": \"site_2_character_val_1\"\n" +
 				  "        \t\t\t}\n" +
 				  "    \t\t}, \n" +
 				  "    \t\t{\n" +
 				  "    \t\t\t \"symptomDescriptionName\": \"onset 2\",\n" +
 				  "    \t\t\t \"symptomDescriptionData\": \n" +
 				  "        \t\t\t { \n" +
-				  "        \t\t\t\t \"symptomsValue\": \"sudden 2\"\n" +
+				  "        \t\t\t\t \"symptomsValue\": \"onset_2_character_val_1\"\n" +
 				  "        \t\t\t }\n" +
 				  "    \t\t}, \n" +
 				  "    \t\t{\n" +
 				  "    \t\t\t \"symptomDescriptionName\": \"character 4\",\n" +
 				  "    \t\t\t  \"symptomDescriptionData\": \n" +
 				  "    \t\t\t   {\n" +
-				  "        \t\t\t  \"symptomsValue\": \"throbbing 4\"\n" +
+				  "        \t\t\t  \"symptomsValue\": \"character_4_val_1\"\n" +
 				  "        \t\t\t }\n" +
 				  "    \t\t }\n" +
 				  "        ]\n" +

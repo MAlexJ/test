@@ -1,4 +1,4 @@
-package time;
+package util_methods;
 
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ import java.util.TimeZone;
 /**
  * Created by malex on 27.06.17.
  */
-public class TestJ {
+public class TestTime {
 
 	/**
 	 * 1499264104780 -> Time in client: 17.15

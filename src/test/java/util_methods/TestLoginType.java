@@ -1,4 +1,4 @@
-package logintype;
+package util_methods;
 
 import org.junit.Test;
 

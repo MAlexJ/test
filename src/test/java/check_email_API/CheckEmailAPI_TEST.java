@@ -1,4 +1,4 @@
-package check_email_test;
+package check_email_API;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;

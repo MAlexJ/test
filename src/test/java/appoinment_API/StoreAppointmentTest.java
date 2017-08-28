@@ -1,4 +1,4 @@
-package testAppointment.sroteAppointment;
+package appoinment_API;
 
 
 import com.mashape.unirest.http.HttpResponse;
@@ -106,8 +106,8 @@ public class StoreAppointmentTest {
 			case 1:
 				symptom = "\t{ \"symptomName\": \"headache 1\",\n" +
 						  "\t\"questions\": [\n" +
-						  "\t\t\t{\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
-						  "\t\t    {\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+						  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
+						  "\t\t    {\"symptomQuestionId\":\"2\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
 						  "\t\t],\n" +
 						  "\t\"symptomDescription\": \n" +
 						  "    \t[\n" +

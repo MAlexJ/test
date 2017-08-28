@@ -1,4 +1,4 @@
-package appoinment_new_test;
+package appoinment_API;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
