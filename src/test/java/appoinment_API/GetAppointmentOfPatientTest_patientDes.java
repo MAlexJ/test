@@ -52,7 +52,7 @@ public class GetAppointmentOfPatientTest_patientDes {
 
 		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition.\n" +
 				  "\n" +
-				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+				  "He's not visited any hospital yet.", appointment.getString("patientDes"));
 
 	}
 
@@ -87,7 +87,7 @@ public class GetAppointmentOfPatientTest_patientDes {
 
 		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition who presents with Headache and Pain.\n" +
 				  "\n" +
-				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+				  "He's not visited any hospital yet.", appointment.getString("patientDes"));
 	}
 
 
@@ -120,10 +120,10 @@ public class GetAppointmentOfPatientTest_patientDes {
 
 		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition who presents with Headache 1 and Headache 2.\n" +
 				  "\n" +
-				  "The Headache 1 is onset, character\n" +
-				  "The Headache 2 is site 2, onset 2, character 4\n" +
+				  "The Headache 1 is onset_val_1, character_val_1\n" +
+				  "The Headache 2 is site_2_character_val_1, onset_2_character_val_1, character_4_val_1\n" +
 				  "\n" +
-				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+				  "He's not visited any hospital yet.", appointment.getString("patientDes"));
 
 	}
 
@@ -154,7 +154,7 @@ public class GetAppointmentOfPatientTest_patientDes {
 
 		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition who presents with Headache 1 of 1 days duration and Headache 2 of 3 days duration.\n" +
 				  "\n" +
-				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+				  "He's not visited any hospital yet.", appointment.getString("patientDes"));
 	}
 
 
@@ -184,7 +184,7 @@ public class GetAppointmentOfPatientTest_patientDes {
 
 		assertEquals("Alex Test is a 32 yrs old, with no known chronic medical condition who presents with Headache 1 of 1 days duration.\n" +
 				  "\n" +
-				  "Hes not visited any hospital yet.", appointment.getString("patientDes"));
+				  "He's not visited any hospital yet.", appointment.getString("patientDes"));
 	}
 
 
