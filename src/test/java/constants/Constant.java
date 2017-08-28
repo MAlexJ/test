@@ -51,4 +51,10 @@ public class Constant {
 	public final static String RESET_API_API = URL_BASE + "/api/resetAPI";
 	public final static String SET_STATUS_API = URL_BASE + "/api/setStatusAPI";
 
+	// pastconsult API
+	public final static String URL_CHANGE_APPOINTMENT_STATUS = URL_BASE + "/pastconsult/setStatusAppointmentForTest";
+	public final static String URL_GET_ALL_CONSULT_FOR_DOCTOR = URL_BASE + "/pastconsult/getAllConsultForDoctor";
+
+
+
 }
