@@ -134,7 +134,7 @@ public class PastConsult_for_DOCTOR_TEST {
 		String format = new SimpleDateFormat("dd MMM yyyy").format(Calendar.getInstance().getTime());
 		assertEquals(format + ": with no known chronic medical condition who presents with headache 1 of 2 days duration and headache 2.\n" +
 				  "\n" +
-				  "The headache 1 is TEXT TXT TEXT......, sudden, throbbing\n" +
+				  "The headache 1 is sudden, throbbing\n" +
 				  "The headache 2 is fullSided 2, sudden 2, throbbing 2\n" +
 				  "\n" +
 				  "He's not visited any hospital yet.", appointment.getString("patientDes"));
@@ -168,10 +168,7 @@ public class PastConsult_for_DOCTOR_TEST {
 							    "\t\t    {\"symptomQuestionId\":\"2\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
 							    "\t\t],\n" +
 							    "\t\t\"symptomDescription\": [\n" +
-							    "    \t\t{\n" +
-							    "        \t\t\"symptomDescriptionName\": \"site\",\n" +
-							    "    \t\t\t\"symptomDescriptionOther\":\"TEXT TXT TEXT......\"\n" +
-							    "        \t}, \n" +
+							    "     \n" +
 							    "        \t{\n" +
 							    "        \t\t\"symptomDescriptionName\": \"onset\",\n" +
 							    "        \t\t\"symptomDescriptionData\": \n" +
