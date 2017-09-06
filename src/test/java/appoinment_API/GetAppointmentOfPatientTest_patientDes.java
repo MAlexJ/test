@@ -210,8 +210,8 @@ public class GetAppointmentOfPatientTest_patientDes {
 				  "\t{ \n" +
 				  "\t\t\"symptomName\": \"Headache 1\",\n" +
 				  "\t\t\"questions\": [\n" +
-				  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"1 days\"},\n" +
-				  "\t\t    {\"symptomQuestionId\":\"2\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t\t{\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"1 days\"},\n" +
+				  "\t\t    {\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
 				  "\t\t]\n" +
 				  "\t}" +
 				  "   ]" +
@@ -255,15 +255,15 @@ public class GetAppointmentOfPatientTest_patientDes {
 				  "\t{ \n" +
 				  "\t\t\"symptomName\": \"Headache 1\",\n" +
 				  "\t\t\"questions\": [\n" +
-				  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"1 days\"},\n" +
-				  "\t\t    {\"symptomQuestionId\":\"2\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t\t{\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"1 days\"},\n" +
+				  "\t\t    {\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
 				  "\t\t]\n" +
 				  "\t}, \n" +
 				  "\t{ \n" +
 				  "\t\t\"symptomName\": \"Headache 2\",\n" +
 				  "\t\t\"questions\": [\n" +
-				  "\t\t\t{\"symptomQuestionId\":\"3\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"3 days\"},\n" +
-				  "\t\t    {\"symptomQuestionId\":\"4\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t\t{\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"3 days\"},\n" +
+				  "\t\t    {\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
 				  "\t\t]\n" +
 				  "\t}\n" +
 				  "   ]" +

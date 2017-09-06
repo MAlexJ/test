@@ -9,6 +9,7 @@ import controller.test.user.SignUpPatientTest;
 import model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Date;
@@ -165,6 +166,25 @@ public class GetAppointmentOfPatientTest_CHECK_STATUS {
 
 	// The parameter: symptomQuestionId should be in the question.
 	@Test
+	@Ignore
+	/**
+	 * [9/5/17, 13:30:48] Abdul Rehman Nazar: On 9/5/17, at 3:28 PM, М_ALEX wrote:
+	 > then the symptom will be without question
+
+	 not a single symptom will be without question on mobile side.
+	 2 questions will asked from every user
+	 1) When did it start?
+	 2) How did it start?
+
+	 and more questions will be get from the admin panel expect above 2.
+
+	 so the problem is when I try to update the questions JSON I don’t have question ID.
+	 and it return error in response to put the question ID
+	 [9/5/17, 13:31:08] Abdul Rehman Nazar: we have to design on the server side that for these 2 questions we don’t need the questionID because they are default
+	 [9/5/17, 13:31:22] Abdul Rehman Nazar: rest I can mange the question ID as I am getting from server and can send you back
+	 [9/5/17, 13:31:31] Abdul Rehman Nazar: Am I successful to deliver the problem?
+	 [9/5/17, 13:33:03] М_ALEX: I realized the problem. I'll remove the questionID from the check.
+	 */
 	public void storeAppointment_ERROR_when_not_send_symptomQuestionId_with_questions() {
 
 		// #1 create users
@@ -198,8 +218,8 @@ public class GetAppointmentOfPatientTest_CHECK_STATUS {
 				  "\t{ \n" +
 				  "\t\t\"symptomName\": \"headache 1\",\n" +
 				  "\t\t\"questions\": [\n" +
-				  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
-				  "\t\t    {\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t\t{\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
+				  "\t\t    {\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
 				  "\t\t]\n" +
 				  "\t}\n" +
 				  "   ]\n" +
@@ -376,8 +396,8 @@ public class GetAppointmentOfPatientTest_CHECK_STATUS {
 				  "\t{ \n" +
 				  "\t\t\"symptomName\": \"headache 1\",\n" +
 				  "\t\t\"questions\": [\n" +
-				  "\t\t\t{\"symptomQuestionId\":\"1\",\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
-				  "\t\t    {\"symptomQuestionId\":\"2\",\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
+				  "\t\t\t{\"symptomQuestion\":\"When did it start?\",\"symptomAnswer\":\"2 days\"},\n" +
+				  "\t\t    {\"symptomQuestion\":\"How did it start?\",\"symptomAnswer\":\"bla bla bla\"}\n" +
 				  "\t\t],\n" +
 				  "\t\t\"symptomDescription\": [\n" +
 				  "    \t\t{\n" +

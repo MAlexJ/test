@@ -137,7 +137,7 @@ public class CheckEmailAPI_TEST {
 		// #3 asserts
 		assertEquals("To register an account, you can only use one of the social networks Facebook or G+. You already have the " + secondLType + " account.", response.getString("message"));
 		assertEquals(false, response.getBoolean("status"));
-		assertEquals(501, response.getInt("statusCode"));
+		assertEquals(200, response.getInt("statusCode"));
 
 		try {
 			assertNull(response.getJSONObject("user"));
@@ -164,7 +164,7 @@ public class CheckEmailAPI_TEST {
 		// #3 asserts
 		assertEquals("To register an account, you can only use one of the social networks Facebook or G+. You already have the " + loginTypeForReg + " account.", response.getString("message"));
 		assertEquals(false, response.getBoolean("status"));
-		assertEquals(501, response.getInt("statusCode"));
+		assertEquals(200, response.getInt("statusCode"));
 
 		try {
 			assertNull(response.getJSONObject("user"));
